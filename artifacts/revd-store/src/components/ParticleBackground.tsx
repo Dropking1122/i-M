@@ -60,6 +60,7 @@ export default function ParticleBackground() {
     const shootingStars: HTMLDivElement[] = [];
 
     function launchStar() {
+      if (!container) return;
       const star = document.createElement('div');
       const startX = Math.random() * 80; // % from left
       const startY = Math.random() * 50; // % from top

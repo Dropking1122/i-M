@@ -92,20 +92,22 @@ const PROJECTS: Project[] = [
   },
 ];
 
+const isTouchDevice = typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches;
+
 export default function Projects() {
   const sectionRef = useRef<HTMLElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-  const animated = useRef(false);
+  const headerRef  = useRef<HTMLDivElement>(null);
+  const gridRef    = useRef<HTMLDivElement>(null);
+  const animated   = useRef(false);
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
     const headerItems = headerRef.current?.querySelectorAll<HTMLElement>('[data-header]');
-    const cards = gridRef.current?.querySelectorAll<HTMLElement>('.proj-card');
+    const cards       = gridRef.current?.querySelectorAll<HTMLElement>('.proj-card');
     headerItems?.forEach((el) => { el.style.opacity = '0'; el.style.transform = 'translateY(22px)'; });
-    cards?.forEach((el) => { el.style.opacity = '0'; el.style.transform = 'translateY(40px) scale(0.97)'; });
+    cards?.forEach((el) => { el.style.opacity = '0'; el.style.transform = 'translateY(48px) scale(0.95)'; });
 
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting && !animated.current) {
@@ -113,22 +115,15 @@ export default function Projects() {
 
         if (headerItems?.length) {
           animate(Array.from(headerItems), {
-            opacity: [0, 1],
-            translateY: [22, 0],
-            duration: 650,
-            delay: stagger(80),
-            ease: 'outCubic',
+            opacity: [0, 1], translateY: [22, 0],
+            duration: 650, delay: stagger(80), ease: 'outCubic',
           });
         }
 
         if (cards?.length) {
           animate(Array.from(cards), {
-            opacity: [0, 1],
-            translateY: [40, 0],
-            scale: [0.97, 1],
-            duration: 620,
-            delay: stagger(65, { start: 200 }),
-            ease: 'outCubic',
+            opacity: [0, 1], translateY: [48, 0], scale: [0.95, 1],
+            duration: 680, delay: stagger(65, { start: 200 }), ease: 'outBack(1.2)',
           });
         }
       }
@@ -138,20 +133,44 @@ export default function Projects() {
     return () => observer.disconnect();
   }, []);
 
+  /* Desktop: 3D tilt. Mobile: skip (tilt is weird on touch) */
   const handleTilt = (e: React.MouseEvent<HTMLDivElement>, project: Project) => {
+    if (isTouchDevice) return;
     const el = e.currentTarget;
     const rect = el.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    el.style.transition = 'transform 0.1s ease, box-shadow 0.15s ease';
-    el.style.transform = `perspective(700px) rotateX(${-y * 9}deg) rotateY(${x * 11}deg) translateZ(6px)`;
-    el.style.boxShadow = `${x * 20}px ${y * 20 + 8}px 50px ${project.glowColor}`;
+    const x = (e.clientX - rect.left) / rect.width  - 0.5;
+    const y = (e.clientY - rect.top)  / rect.height - 0.5;
+    el.style.transition  = 'transform 0.1s ease, box-shadow 0.15s ease';
+    el.style.transform   = `perspective(700px) rotateX(${-y * 9}deg) rotateY(${x * 11}deg) translateZ(8px)`;
+    el.style.boxShadow   = `${x * 22}px ${y * 22 + 8}px 55px ${project.glowColor}`;
   };
 
   const handleTiltLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isTouchDevice) return;
     const el = e.currentTarget;
-    el.style.transition = 'transform 0.65s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease';
-    el.style.transform = '';
+    el.style.transition  = 'transform 0.65s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease';
+    el.style.transform   = '';
+    el.style.boxShadow   = '';
+  };
+
+  /* Mobile: scale + glow on touch */
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>, project: Project) => {
+    const el = e.currentTarget;
+    animate(el, {
+      scale: [1, 0.97],
+      duration: 180,
+      ease: 'outCubic',
+    });
+    el.style.boxShadow = `0 8px 36px ${project.glowColor}`;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    animate(el, {
+      scale: [0.97, 1.03, 1],
+      duration: 400,
+      ease: 'outElastic(1, 0.6)',
+    });
     el.style.boxShadow = '';
   };
 
@@ -183,22 +202,33 @@ export default function Projects() {
           {PROJECTS.map((project, idx) => (
             <div
               key={idx}
-              className="proj-card group glass-card rounded-2xl overflow-hidden border border-white/6 flex flex-col cursor-default"
-              onMouseMove={(e) => handleTilt(e, project)}
+              className="proj-card card-shine group glass-card rounded-2xl overflow-hidden border border-white/6 flex flex-col cursor-default tap-active transition-shadow duration-300"
+              onMouseMove={(e)  => handleTilt(e, project)}
               onMouseLeave={handleTiltLeave}
+              onTouchStart={(e) => handleTouchStart(e, project)}
+              onTouchEnd={handleTouchEnd}
             >
-              {/* Color accent strip */}
+              {/* Gradient accent strip */}
               <div
                 className="h-[2px] w-full flex-shrink-0"
-                style={{ background: `linear-gradient(90deg, ${project.gradientFrom}, ${project.gradientTo})` }}
+                style={{ background: `linear-gradient(90deg, ${project.gradientFrom}, ${project.gradientTo}, transparent)` }}
+              />
+
+              {/* Glow line — shows on hover */}
+              <div
+                className="h-px w-full flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ background: `linear-gradient(90deg, transparent, ${project.gradientFrom}80, transparent)` }}
               />
 
               {/* Card header */}
               <div className="p-4 xs:p-5 sm:p-6 pb-0">
                 <div className="flex items-start justify-between mb-4">
                   <div
-                    className="w-11 h-11 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-white shadow-lg flex-shrink-0"
-                    style={{ background: `linear-gradient(135deg, ${project.gradientFrom}, ${project.gradientTo})`, boxShadow: `0 4px 16px ${project.glowColor}` }}
+                    className="w-11 h-11 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-white shadow-lg flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+                    style={{
+                      background: `linear-gradient(135deg, ${project.gradientFrom}, ${project.gradientTo})`,
+                      boxShadow: `0 4px 16px ${project.glowColor}`,
+                    }}
                   >
                     <project.Icon size={20} />
                   </div>
@@ -206,7 +236,7 @@ export default function Projects() {
                     {project.tag}
                   </span>
                 </div>
-                <h3 className="text-base xs:text-lg sm:text-xl font-bold text-white mb-0.5">{project.title}</h3>
+                <h3 className="text-base xs:text-lg sm:text-xl font-bold text-white mb-0.5 group-hover:text-blue-300 transition-colors duration-300">{project.title}</h3>
                 <p className="text-[10px] xs:text-xs sm:text-sm text-slate-500 mb-2.5">{project.subtitle}</p>
               </div>
 
@@ -232,14 +262,14 @@ export default function Projects() {
                     target="_blank"
                     rel="noreferrer"
                     className={[
-                      'ripple-wrap flex-1 flex items-center justify-center gap-1.5 py-2 xs:py-2.5 rounded-xl text-[11px] xs:text-xs sm:text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5',
+                      'ripple-wrap flex-1 flex items-center justify-center gap-1.5 py-2.5 xs:py-2.5 rounded-xl text-[11px] xs:text-xs sm:text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 active:scale-95',
                       link.primary
                         ? 'text-white'
                         : 'bg-white/4 hover:bg-white/8 text-slate-300 border border-white/8',
                     ].join(' ')}
                     style={link.primary ? {
                       background: `linear-gradient(135deg, ${project.gradientFrom}, ${project.gradientTo})`,
-                      boxShadow: `0 4px 14px ${project.glowColor}`,
+                      boxShadow:  `0 4px 14px ${project.glowColor}`,
                     } : {}}
                   >
                     <link.icon size={11} /> {link.label}
@@ -249,7 +279,6 @@ export default function Projects() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
