@@ -49,7 +49,9 @@ su - deploy
 
 ## 2. Instalasi Node.js & pnpm
 
-### Install Node.js 20 LTS via nvm
+### Install Node.js 22 LTS via nvm
+
+> **Catatan:** pnpm versi terbaru (11.x) membutuhkan Node.js ≥22.13. Gunakan Node.js 22 LTS — bukan 20.
 
 ```bash
 # Install nvm
@@ -58,13 +60,13 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 # Reload shell
 source ~/.bashrc
 
-# Install Node.js 20 LTS
-nvm install 20
-nvm use 20
-nvm alias default 20
+# Install Node.js 22 LTS
+nvm install 22
+nvm use 22
+nvm alias default 22
 
 # Verifikasi
-node --version   # v20.x.x
+node --version   # v22.x.x
 npm --version    # 10.x.x
 ```
 
