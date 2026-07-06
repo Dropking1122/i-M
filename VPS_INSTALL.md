@@ -76,7 +76,15 @@ npm --version    # 10.x.x
 npm install -g pnpm@latest
 
 # Verifikasi
-pnpm --version   # 9.x.x atau lebih baru
+pnpm --version   # 11.x.x atau lebih baru
+```
+
+### Izinkan build script (wajib untuk pnpm 11+)
+
+pnpm 11 memblokir semua native build script secara default (fitur keamanan). Project ini membutuhkan `esbuild` untuk build — jalankan perintah berikut **sekali** setelah clone:
+
+```bash
+pnpm approve-builds
 ```
 
 ---
