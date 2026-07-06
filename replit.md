@@ -1,6 +1,6 @@
-# [Project name]
+# REVD STORE
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A premium portfolio and digital product storefront for Revaldi — showcasing custom software projects and selling digital products like Canva Pro, CapCut, VPN, and more.
 
 ## Run & Operate
 
@@ -22,11 +22,18 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/revd-store/` — React + Vite frontend (the main storefront)
+- `artifacts/revd-store/src/sections/` — Hero, Projects, Products, Contact sections
+- `artifacts/revd-store/src/components/` — Navbar, Footer, BottomNav, BackToTop
+- `artifacts/revd-store/src/index.css` — global CSS variables, glass-card, gradient-text utilities
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Presentation-first app — no backend, all data is static in React components
+- Uses Framer Motion for all animations (scroll-triggered reveals, staggered cards, orb blobs, spin ring)
+- Dark mode is default; base color is `#0a0e1a` (deep navy), defined as CSS var `--bg-primary`
+- Icons from `react-icons` (FaInstagram, FaWhatsapp, etc.) — no Font Awesome CDN needed
+- `framer-motion` `type: "spring" as const` required for TypeScript compatibility in variant objects
 
 ## Product
 
