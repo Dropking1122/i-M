@@ -21,6 +21,11 @@ const STATS = [
   { id: 'stat-clients',  label: 'Clients',   target: 200 },
 ];
 
+/* ─── Ganti '/avatar.jpg' dengan path foto kamu di folder public/ ───
+   Contoh: taruh file di artifacts/revd-store/public/avatar.jpg
+   Kalau tidak ada foto, set ke null → otomatis tampil inisial "RV"  */
+const AVATAR_PHOTO: string | null = '/avatar.jpg';
+
 const TECH_TAGS = [
   { label: 'React',        color: '#61dafb', bg: 'rgba(97,218,251,0.12)'  },
   { label: 'Node.js',      color: '#68a063', bg: 'rgba(104,160,99,0.12)'  },
@@ -54,6 +59,7 @@ export default function Hero() {
   const [titleIdx, setTitleIdx]     = useState(0);
   const [titleText, setTitleText]   = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [imgFailed, setImgFailed]   = useState(false);
 
   const contentRef   = useRef<HTMLDivElement>(null);
   const avatarRef    = useRef<HTMLDivElement>(null);
@@ -237,12 +243,19 @@ export default function Hero() {
                   style={{ background: 'radial-gradient(circle at 38% 32%, rgba(59,130,246,0.25) 0%, transparent 62%)' }}
                 />
 
-                {/* Monogram */}
-                <span
-                  className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-black gradient-text select-none tracking-tight relative z-10"
-                >
-                  RV
-                </span>
+                {/* Photo atau Monogram — state-driven agar aman saat re-render */}
+                {AVATAR_PHOTO && !imgFailed ? (
+                  <img
+                    src={AVATAR_PHOTO}
+                    alt="Revaldi"
+                    className="w-full h-full object-cover object-center rounded-full relative z-10"
+                    onError={() => setImgFailed(true)}
+                  />
+                ) : (
+                  <span className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-black gradient-text select-none tracking-tight relative z-10 flex items-center justify-center">
+                    RV
+                  </span>
+                )}
               </div>
             </div>
 

@@ -6,7 +6,7 @@ import {
   FaBook, FaCheck, FaLayerGroup,
 } from 'react-icons/fa';
 
-interface ProjectLink { label: string; url: string; icon: React.ElementType; primary?: boolean }
+interface ProjectLink { label: string; shortLabel?: string; url: string; icon: React.ElementType; primary?: boolean }
 interface Project {
   title: string; subtitle: string; description: string; tag: string;
   Icon: React.ElementType; gradientFrom: string; gradientTo: string; glowColor: string;
@@ -21,8 +21,8 @@ const PROJECTS: Project[] = [
     gradientFrom: '#3b82f6', gradientTo: '#1d4ed8', glowColor: 'rgba(59,130,246,0.35)',
     features: ['Multi-role: Admin & Kasir', 'POS dengan keranjang multi-item', 'Manajemen hutang & cicilan', 'Laporan penjualan & profit (PDF/Excel)', 'Backup database otomatis'],
     links: [
-      { label: 'Baca Dokumentasi', url: 'https://github.com/Dropking1122/FEATURES/blob/main/01-POS-SUPPLIER-REVD/FEATURES.md', icon: FaBook, primary: true },
-      { label: 'Overview', url: 'https://github.com/Dropking1122/FEATURES/blob/main/01-POS-SUPPLIER-REVD/FEATURES.md', icon: FaGithub },
+      { label: 'Dokumentasi', shortLabel: 'Docs', url: 'https://github.com/Dropking1122/FEATURES/blob/main/01-POS-SUPPLIER-REVD/FEATURES.md', icon: FaBook, primary: true },
+      { label: 'Overview', shortLabel: 'GitHub', url: 'https://github.com/Dropking1122/FEATURES/blob/main/01-POS-SUPPLIER-REVD/FEATURES.md', icon: FaGithub },
     ],
   },
   {
@@ -32,8 +32,8 @@ const PROJECTS: Project[] = [
     gradientFrom: '#25d366', gradientTo: '#128c7e', glowColor: 'rgba(37,211,102,0.35)',
     features: ['Katalog & pemesanan otomatis', 'QRIS, Transfer Bank, Saldo', 'Stok digital kirim otomatis', 'Voucher & bundling produk', 'Dashboard & notifikasi real-time'],
     links: [
-      { label: 'Baca Dokumentasi', url: 'https://github.com/Dropking1122/FEATURES/blob/main/02-REVDWABOT/FEATURES.md', icon: FaBook, primary: true },
-      { label: 'Overview', url: 'https://github.com/Dropking1122/FEATURES/blob/main/02-REVDWABOT/FEATURES.md', icon: FaGithub },
+      { label: 'Dokumentasi', shortLabel: 'Docs', url: 'https://github.com/Dropking1122/FEATURES/blob/main/02-REVDWABOT/FEATURES.md', icon: FaBook, primary: true },
+      { label: 'Overview', shortLabel: 'GitHub', url: 'https://github.com/Dropking1122/FEATURES/blob/main/02-REVDWABOT/FEATURES.md', icon: FaGithub },
     ],
   },
   {
@@ -43,8 +43,8 @@ const PROJECTS: Project[] = [
     gradientFrom: '#f59e0b', gradientTo: '#d97706', glowColor: 'rgba(245,158,11,0.35)',
     features: ['QR Code unik per siswa', 'Scan via kamera perangkat', 'Dashboard guru & admin', 'Status: Hadir, Terlambat, Izin, Alpha', 'Laporan export Excel / PDF'],
     links: [
-      { label: 'Baca Dokumentasi', url: 'https://github.com/Dropking1122/FEATURES/blob/main/03-ABSENSIQR-REVD/FEATURES.md', icon: FaBook, primary: true },
-      { label: 'Overview', url: 'https://github.com/Dropking1122/FEATURES/blob/main/03-ABSENSIQR-REVD/FEATURES.md', icon: FaGithub },
+      { label: 'Dokumentasi', shortLabel: 'Docs', url: 'https://github.com/Dropking1122/FEATURES/blob/main/03-ABSENSIQR-REVD/FEATURES.md', icon: FaBook, primary: true },
+      { label: 'Overview', shortLabel: 'GitHub', url: 'https://github.com/Dropking1122/FEATURES/blob/main/03-ABSENSIQR-REVD/FEATURES.md', icon: FaGithub },
     ],
   },
   {
@@ -54,8 +54,8 @@ const PROJECTS: Project[] = [
     gradientFrom: '#8b5cf6', gradientTo: '#6d28d9', glowColor: 'rgba(139,92,246,0.35)',
     features: ['Landing page modern & responsif', 'Form pendaftaran online', 'Info program kursus lengkap', 'Galeri & testimoni alumni', 'Dashboard admin'],
     links: [
-      { label: 'Baca Dokumentasi', url: 'https://github.com/Dropking1122/FEATURES/blob/main/04-PROJECT-WEB-CLC/FEATURES.md', icon: FaBook, primary: true },
-      { label: 'Live Site', url: 'https://github.com/Dropking1122/FEATURES/blob/main/04-PROJECT-WEB-CLC/FEATURES.md', icon: FaGlobe },
+      { label: 'Dokumentasi', shortLabel: 'Docs', url: 'https://github.com/Dropking1122/FEATURES/blob/main/04-PROJECT-WEB-CLC/FEATURES.md', icon: FaBook, primary: true },
+      { label: 'Live Site', shortLabel: 'Live', url: 'https://github.com/Dropking1122/FEATURES/blob/main/04-PROJECT-WEB-CLC/FEATURES.md', icon: FaGlobe },
     ],
   },
   {
@@ -65,8 +65,8 @@ const PROJECTS: Project[] = [
     gradientFrom: '#0088cc', gradientTo: '#005f8e', glowColor: 'rgba(0,136,204,0.35)',
     features: ['Katalog & pemesanan via inline keyboard', 'QRIS otomatis & transfer manual', 'Kirim produk digital otomatis', 'Panel admin via command Telegram', 'Broadcast & laporan penjualan'],
     links: [
-      { label: 'Baca Dokumentasi', url: 'https://github.com/Dropking1122/FEATURES/blob/main/05-TELEBOT-ORDER/FEATURES.md', icon: FaBook, primary: true },
-      { label: 'Overview', url: 'https://github.com/Dropking1122/FEATURES/blob/main/05-TELEBOT-ORDER/FEATURES.md', icon: FaGithub },
+      { label: 'Dokumentasi', shortLabel: 'Docs', url: 'https://github.com/Dropking1122/FEATURES/blob/main/05-TELEBOT-ORDER/FEATURES.md', icon: FaBook, primary: true },
+      { label: 'Overview', shortLabel: 'GitHub', url: 'https://github.com/Dropking1122/FEATURES/blob/main/05-TELEBOT-ORDER/FEATURES.md', icon: FaGithub },
     ],
   },
   {
@@ -76,8 +76,8 @@ const PROJECTS: Project[] = [
     gradientFrom: '#f59e0b', gradientTo: '#b45309', glowColor: 'rgba(245,158,11,0.35)',
     features: ['Monitoring CPU, RAM, suhu & uptime', 'Kontrol WiFi on/off & ganti password', 'Block/unblock perangkat via MAC', 'Alert otomatis device baru masuk', 'Plugin modular — mudah dikembangkan'],
     links: [
-      { label: 'Baca Dokumentasi', url: 'https://github.com/Dropking1122/FEATURES/blob/main/06-TELEBOTAKU/FEATURES.md', icon: FaBook, primary: true },
-      { label: 'Overview', url: 'https://github.com/Dropking1122/telebotaku', icon: FaGithub },
+      { label: 'Dokumentasi', shortLabel: 'Docs', url: 'https://github.com/Dropking1122/FEATURES/blob/main/06-TELEBOTAKU/FEATURES.md', icon: FaBook, primary: true },
+      { label: 'GitHub', shortLabel: 'GitHub', url: 'https://github.com/Dropking1122/telebotaku', icon: FaGithub },
     ],
   },
   {
@@ -87,7 +87,7 @@ const PROJECTS: Project[] = [
     gradientFrom: '#10b981', gradientTo: '#059669', glowColor: 'rgba(16,185,129,0.35)',
     features: ['Produk digital gratis pilihan', 'Tools & template siap pakai', 'Resources berkualitas', 'Update produk secara berkala', 'Tanpa biaya, langsung download'],
     links: [
-      { label: 'Kunjungi Sekarang', url: 'https://revdstore.web.id', icon: FaGlobe, primary: true },
+      { label: 'Kunjungi Sekarang', shortLabel: 'Kunjungi', url: 'https://revdstore.web.id', icon: FaGlobe, primary: true },
     ],
   },
 ];
@@ -253,8 +253,11 @@ export default function Projects() {
                 </ul>
               </div>
 
-              {/* Card footer */}
-              <div className="p-4 xs:p-5 sm:p-6 pt-3 border-t border-white/6 flex flex-col xs:flex-row gap-2">
+              {/* Card footer — grid 2-col agar rapi di mobile */}
+              <div
+                className="p-3 xs:p-4 sm:p-5 pt-3 border-t border-white/6 grid gap-1.5 sm:gap-2"
+                style={{ gridTemplateColumns: project.links.length === 1 ? '1fr' : '1fr 1fr' }}
+              >
                 {project.links.map((link, li) => (
                   <a
                     key={li}
@@ -262,17 +265,20 @@ export default function Projects() {
                     target="_blank"
                     rel="noreferrer"
                     className={[
-                      'ripple-wrap flex-1 flex items-center justify-center gap-1.5 py-2.5 xs:py-2.5 rounded-xl text-[11px] xs:text-xs sm:text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 active:scale-95',
+                      'ripple-wrap flex items-center justify-center gap-1 sm:gap-1.5 py-2 xs:py-2.5 rounded-xl font-semibold transition-all duration-200 hover:-translate-y-0.5 active:scale-95 min-w-0',
                       link.primary
-                        ? 'text-white'
-                        : 'bg-white/4 hover:bg-white/8 text-slate-300 border border-white/8',
+                        ? 'text-white text-[10px] xs:text-[11px] sm:text-xs'
+                        : 'bg-white/4 hover:bg-white/8 text-slate-300 border border-white/8 text-[10px] xs:text-[11px] sm:text-xs',
                     ].join(' ')}
                     style={link.primary ? {
                       background: `linear-gradient(135deg, ${project.gradientFrom}, ${project.gradientTo})`,
-                      boxShadow:  `0 4px 14px ${project.glowColor}`,
+                      boxShadow:  `0 3px 10px ${project.glowColor}`,
                     } : {}}
                   >
-                    <link.icon size={11} /> {link.label}
+                    <link.icon size={9} className="flex-shrink-0" />
+                    {/* Label pendek di mobile, lengkap di sm+ */}
+                    <span className="sm:hidden truncate">{link.shortLabel ?? link.label}</span>
+                    <span className="hidden sm:inline truncate">{link.label}</span>
                   </a>
                 ))}
               </div>
