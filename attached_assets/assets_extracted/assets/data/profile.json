@@ -1,0 +1,132 @@
+{
+    "personal": {
+        "name": "REVALDI",
+        "initials": "REVDSTORE",
+        "greeting": "Hi, I'm",
+        "bio": "Digital entrepreneur & tech enthusiast. Providing premium digital products and innovative web solutions. Let's connect! ",
+        "profileImage": "assets/img/profile.jpeg",
+        "status": "Available",
+        "email": "me@revdserver.web.id"
+    },
+    "titles": [
+        "Digital Seller ",
+        "Networking ",
+        "Tech Enthusiast ",
+        "Problem Solver ",
+        "Creative Mind "
+    ],
+    "stats": [
+        {
+            "count": 10,
+            "label": "Projects"
+        },
+        {
+            "count": 3,
+            "label": "Years Exp"
+        },
+        {
+            "count": 200,
+            "label": "Clients"
+        }
+    ],
+    "socialLinks": [
+        {
+            "name": "Instagram",
+            "url": "https://instagram.com/revd.cloud",
+            "icon": "fab fa-instagram",
+            "class": "instagram"
+        },
+        {
+            "name": "WhatsApp",
+            "url": "https://wa.me/revdstore/",
+            "icon": "fab fa-whatsapp",
+            "class": "whatsapp"
+        },
+        {
+            "name": "Telegram",
+            "url": "https://t.me/ValltzID",
+            "icon": "fab fa-telegram",
+            "class": "telegram"
+        },
+        {
+            "name": "GitHub",
+            "url": "https://github.com/revaldieka",
+            "icon": "fab fa-github",
+            "class": "github"
+        },
+        {
+            "name": "Email",
+            "url": "mailto:me@revdserver.web.id",
+            "icon": "fas fa-envelope",
+            "class": "email"
+        }
+    ],
+    "quickLinks": [
+        {
+            "title": "TempMail",
+            "description": "Temporary Email Service",
+            "url": "https://tmail.revdstore.web.id",
+            "icon": "fas fa-envelope-open-text"
+        },
+        {
+            "title": "Subdomain Generator",
+            "description": "Create Your Subdomain",
+            "url": "https://sub.revd.site",
+            "icon": "fas fa-globe"
+        },
+        {
+            "title": "Telegram Bot",
+            "description": "My Bot Project",
+            "url": "https://github.com/revaldieka/telebotaku",
+            "icon": "fab fa-telegram"
+        }
+    ],
+    "products": [
+        {
+            "name": "Capcut Pro Private",
+            "icon": "fas fa-video",
+            "description": "Premium video editing"
+        },
+        {
+            "name": "Canva Pro",
+            "icon": "fas fa-palette",
+            "description": "Design like a pro"
+        },
+        {
+            "name": "VIU Private",
+            "icon": "fas fa-tv",
+            "description": "Streaming entertainment"
+        },
+        {
+            "name": "Alight Motion Private",
+            "icon": "fas fa-film",
+            "description": "Motion graphics editor"
+        },
+        {
+            "name": "VPN Tunneling",
+            "icon": "fas fa-shield-alt",
+            "description": "Secure connection"
+        },
+        {
+            "name": "Vidio Private",
+            "icon": "fas fa-play-circle",
+            "description": "Premium streaming"
+        }
+    ],
+    "buttons": {
+        "primary": {
+            "text": "View Products",
+            "icon": "fas fa-shopping-bag",
+            "link": "#products"
+        },
+        "secondary": {
+            "text": "Contact Me",
+            "icon": "fab fa-whatsapp",
+            "link": "https://wa.me/revdstore/"
+        }
+    },
+    "footer": {
+        "text": "Made with ❤️ by",
+        "copyright": "© 2026 REVD STORE. All rights reserved."
+    }
+}

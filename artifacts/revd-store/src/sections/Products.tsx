@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { animate, stagger } from 'animejs';
 import { FaVideo, FaPaintBrush, FaTv, FaFilm, FaShieldAlt, FaPlay, FaWhatsapp, FaGem, FaFire, FaStar } from 'react-icons/fa';
 
@@ -6,15 +6,16 @@ interface Product {
   name: string; desc: string;
   Icon: React.ElementType; gradFrom: string; gradTo: string;
   badge?: { label: string; color: string };
+  img?: string;
 }
 
 const PRODUCTS: Product[] = [
-  { name: 'CapCut Pro Private',  desc: 'Premium video editing',      Icon: FaVideo,     gradFrom: '#1a1a2e', gradTo: '#16213e', badge: { label: 'HOT',  color: '#ef4444' } },
-  { name: 'Canva Pro',           desc: 'Design professional',        Icon: FaPaintBrush,gradFrom: '#00c4cc', gradTo: '#7d2ae8', badge: { label: 'BEST', color: '#f59e0b' } },
-  { name: 'VIU Private',         desc: 'Premium streaming',          Icon: FaTv,        gradFrom: '#1565c0', gradTo: '#0d47a1' },
-  { name: 'Alight Motion',       desc: 'Motion graphics editor',     Icon: FaFilm,      gradFrom: '#6366f1', gradTo: '#8b5cf6', badge: { label: 'NEW',  color: '#10b981' } },
-  { name: 'VPN Tunneling',       desc: 'Secure & fast connection',   Icon: FaShieldAlt, gradFrom: '#11998e', gradTo: '#38ef7d' },
-  { name: 'Vidio Private',       desc: 'Premium streaming access',   Icon: FaPlay,      gradFrom: '#f59e0b', gradTo: '#ef4444', badge: { label: 'HOT',  color: '#ef4444' } },
+  { name: 'CapCut Pro Private',  desc: 'Premium video editing',      Icon: FaVideo,     gradFrom: '#1a1a2e', gradTo: '#16213e', badge: { label: 'HOT',  color: '#ef4444' }, img: '/products/capcut.png'      },
+  { name: 'Canva Pro',           desc: 'Design professional',        Icon: FaPaintBrush,gradFrom: '#00c4cc', gradTo: '#7d2ae8', badge: { label: 'BEST', color: '#f59e0b' }, img: '/products/canva.png'       },
+  { name: 'VIU Private',         desc: 'Premium streaming',          Icon: FaTv,        gradFrom: '#1565c0', gradTo: '#0d47a1',                                             img: '/products/viu.png'         },
+  { name: 'Alight Motion',       desc: 'Motion graphics editor',     Icon: FaFilm,      gradFrom: '#6366f1', gradTo: '#8b5cf6', badge: { label: 'NEW',  color: '#10b981' }, img: '/products/alightmotion.png'},
+  { name: 'VPN Tunneling',       desc: 'Secure & fast connection',   Icon: FaShieldAlt, gradFrom: '#11998e', gradTo: '#38ef7d',                                             img: '/products/vpn.jpg'         },
+  { name: 'Vidio Private',       desc: 'Premium streaming access',   Icon: FaPlay,      gradFrom: '#f59e0b', gradTo: '#ef4444', badge: { label: 'HOT',  color: '#ef4444' }, img: '/products/vidio.png'       },
 ];
 
 function addRipple(e: React.MouseEvent<HTMLElement>) {
@@ -42,6 +43,36 @@ function addTouchRipple(e: React.TouchEvent<HTMLElement>) {
     scale: [0, 1], opacity: [0.5, 0], duration: 700, ease: 'outExpo',
     onComplete: () => ripple.remove(),
   });
+}
+
+/* Sub-komponen — state-driven agar fallback aman saat re-render */
+function ProductIcon({ product }: { product: Product }) {
+  const [imgFailed, setImgFailed] = useState(false);
+
+  if (product.img && !imgFailed) {
+    return (
+      <div
+        className="prod-icon w-12 h-12 xs:w-13 xs:h-13 sm:w-14 sm:h-14 rounded-xl overflow-hidden shadow-md bg-white flex-shrink-0"
+        style={{ boxShadow: `0 4px 16px ${product.gradFrom}50` }}
+      >
+        <img
+          src={product.img}
+          alt={product.name}
+          className="w-full h-full object-contain p-1"
+          onError={() => setImgFailed(true)}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className="prod-icon w-12 h-12 xs:w-13 xs:h-13 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center shadow-md flex-shrink-0"
+      style={{ background: `linear-gradient(135deg, ${product.gradFrom}, ${product.gradTo})` }}
+    >
+      <product.Icon size={19} className="text-white" />
+    </div>
+  );
 }
 
 export default function Products() {
@@ -158,12 +189,7 @@ export default function Products() {
               }}
             >
               <div className="relative flex-shrink-0">
-                <div
-                  className="prod-icon w-12 h-12 xs:w-13 xs:h-13 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center shadow-md"
-                  style={{ background: `linear-gradient(135deg, ${product.gradFrom}, ${product.gradTo})` }}
-                >
-                  <product.Icon size={19} className="text-white" />
-                </div>
+                <ProductIcon product={product} />
                 {product.badge && (
                   <span
                     className="prod-badge absolute -top-1.5 -right-1.5 text-[8px] font-black px-1.5 py-0.5 rounded-full text-white leading-none"
