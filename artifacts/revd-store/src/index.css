@@ -266,3 +266,67 @@ html, body {
 ::-webkit-scrollbar-track { background: #0a0e1a; }
 ::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.4); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.7); }
+
+/* ════════════════════════════════════════
+   MESH BACKGROUND - pure CSS, GPU-composited
+════════════════════════════════════════ */
+@keyframes mesh-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(6vw, -4vh) scale(1.12); }
+  66%       { transform: translate(-4vw, 6vh) scale(0.92); }
+}
+@keyframes mesh-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(-8vw, 5vh) scale(1.08); }
+  75%       { transform: translate(5vw, -7vh) scale(0.95); }
+}
+@keyframes mesh-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(4vw, 8vh) scale(1.15); }
+}
+@keyframes aurora-shift {
+  0%, 100% { opacity: 0.35; transform: scaleX(1) translateX(0); }
+  50%       { opacity: 0.55; transform: scaleX(1.06) translateX(2%); }
+}
+
+.mesh-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+}
+.mesh-1 {
+  width: 65vw; height: 60vh;
+  top: -20%; left: -15%;
+  background: radial-gradient(ellipse, rgba(59,130,246,0.13) 0%, transparent 68%);
+  animation: mesh-drift-1 18s ease-in-out infinite;
+}
+.mesh-2 {
+  width: 55vw; height: 55vh;
+  top: 30%; right: -15%;
+  background: radial-gradient(ellipse, rgba(139,92,246,0.11) 0%, transparent 68%);
+  animation: mesh-drift-2 22s ease-in-out infinite;
+}
+.mesh-3 {
+  width: 50vw; height: 50vh;
+  bottom: -15%; left: 10%;
+  background: radial-gradient(ellipse, rgba(6,182,212,0.09) 0%, transparent 68%);
+  animation: mesh-drift-3 16s ease-in-out infinite;
+}
+.mesh-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(59,130,246,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+}
+.mesh-aurora {
+  position: absolute;
+  top: 58%; left: 0; right: 0;
+  height: 1px;
+  filter: blur(50px);
+  background: linear-gradient(90deg, transparent, rgba(59,130,246,0.18), rgba(139,92,246,0.22), rgba(6,182,212,0.15), transparent);
+  animation: aurora-shift 9s ease-in-out infinite;
+}

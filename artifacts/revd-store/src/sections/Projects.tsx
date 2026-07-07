@@ -38,7 +38,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: 'AbsensiQR REVD', subtitle: 'Absensi Siswa Berbasis QR Code',
-    description: 'Aplikasi absensi modern untuk sekolah — setiap siswa punya QR Code unik, scan saat masuk, dan kehadiran langsung tercatat real-time.',
+    description: 'Aplikasi absensi modern untuk sekolah - setiap siswa punya QR Code unik, scan saat masuk, dan kehadiran langsung tercatat real-time.',
     tag: 'Laravel · MySQL', Icon: FaQrcode,
     gradientFrom: '#f59e0b', gradientTo: '#d97706', glowColor: 'rgba(245,158,11,0.35)',
     features: ['QR Code unik per siswa', 'Scan via kamera perangkat', 'Dashboard guru & admin', 'Status: Hadir, Terlambat, Izin, Alpha', 'Laporan export Excel / PDF'],
@@ -49,7 +49,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: 'Website CLC', subtitle: 'Computer Learning Center',
-    description: 'Website resmi lembaga kursus komputer CLC — informasi program, pendaftaran online, dan manajemen siswa. Live di clccourse.online.',
+    description: 'Website resmi lembaga kursus komputer CLC - informasi program, pendaftaran online, dan manajemen siswa. Live di clccourse.online.',
     tag: 'Web · PHP', Icon: FaGraduationCap,
     gradientFrom: '#8b5cf6', gradientTo: '#6d28d9', glowColor: 'rgba(139,92,246,0.35)',
     features: ['Landing page modern & responsif', 'Form pendaftaran online', 'Info program kursus lengkap', 'Galeri & testimoni alumni', 'Dashboard admin'],
@@ -60,7 +60,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: 'Telegram Bot Order', subtitle: 'Bot Pemesanan Otomatis via Telegram',
-    description: 'Bot Telegram siap pakai untuk jualan produk digital otomatis — pelanggan pesan, bayar, dan produk langsung dikirim ke chat tanpa admin standby.',
+    description: 'Bot Telegram siap pakai untuk jualan produk digital otomatis - pelanggan pesan, bayar, dan produk langsung dikirim ke chat tanpa admin standby.',
     tag: 'Node.js · Telegram API', Icon: FaTelegram,
     gradientFrom: '#0088cc', gradientTo: '#005f8e', glowColor: 'rgba(0,136,204,0.35)',
     features: ['Katalog & pemesanan via inline keyboard', 'QRIS otomatis & transfer manual', 'Kirim produk digital otomatis', 'Panel admin via command Telegram', 'Broadcast & laporan penjualan'],
@@ -71,10 +71,10 @@ const PROJECTS: Project[] = [
   },
   {
     title: 'Telebotaku', subtitle: 'Bot Telegram Manajemen Router OpenWRT',
-    description: 'Bot Telegram modular yang berjalan langsung di router OpenWRT — monitoring CPU/RAM/suhu, kontrol WiFi, block device, speed test, dan backup konfigurasi via chat.',
+    description: 'Bot Telegram modular yang berjalan langsung di router OpenWRT - monitoring CPU/RAM/suhu, kontrol WiFi, block device, speed test, dan backup konfigurasi via chat.',
     tag: 'Python · OpenWRT · Shell', Icon: FaWifi,
     gradientFrom: '#f59e0b', gradientTo: '#b45309', glowColor: 'rgba(245,158,11,0.35)',
-    features: ['Monitoring CPU, RAM, suhu & uptime', 'Kontrol WiFi on/off & ganti password', 'Block/unblock perangkat via MAC', 'Alert otomatis device baru masuk', 'Plugin modular — mudah dikembangkan'],
+    features: ['Monitoring CPU, RAM, suhu & uptime', 'Kontrol WiFi on/off & ganti password', 'Block/unblock perangkat via MAC', 'Alert otomatis device baru masuk', 'Plugin modular - mudah dikembangkan'],
     links: [
       { label: 'Dokumentasi', shortLabel: 'Docs', url: 'https://github.com/Dropking1122/FEATURES/blob/main/06-TELEBOTAKU/FEATURES.md', icon: FaBook, primary: true },
       { label: 'GitHub', shortLabel: 'GitHub', url: 'https://github.com/Dropking1122/telebotaku', icon: FaGithub },
@@ -82,7 +82,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: 'Free Product Digital', subtitle: 'Produk Digital Gratis dari REVD Store',
-    description: 'Kumpulan produk digital gratis yang bisa langsung digunakan — tools, template, dan resources berkualitas dari REVD Store.',
+    description: 'Kumpulan produk digital gratis yang bisa langsung digunakan - tools, template, dan resources berkualitas dari REVD Store.',
     tag: 'Gratis · Digital', Icon: FaGift,
     gradientFrom: '#10b981', gradientTo: '#059669', glowColor: 'rgba(16,185,129,0.35)',
     features: ['Produk digital gratis pilihan', 'Tools & template siap pakai', 'Resources berkualitas', 'Update produk secara berkala', 'Tanpa biaya, langsung download'],
@@ -190,7 +190,7 @@ export default function Projects() {
             Dokumentasi <span className="gradient-text">Project</span>
           </h2>
           <p data-header className="text-slate-400 text-xs xs:text-sm sm:text-base max-w-lg mx-auto">
-            Lihat fitur lengkap setiap project — tersedia untuk dibeli dan dikustomisasi
+            Lihat fitur lengkap setiap project - tersedia untuk dibeli dan dikustomisasi
           </p>
         </div>
 

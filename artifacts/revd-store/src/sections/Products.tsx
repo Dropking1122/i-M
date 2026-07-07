@@ -229,7 +229,7 @@ export default function Products() {
           <div className="flex items-center gap-2 text-amber-400">
             <FaFire size={18} className="flex-shrink-0" />
             <p className="text-xs xs:text-sm sm:text-base font-semibold text-white">
-              Semua produk tersedia — <span className="text-cyan-400">chat sekarang</span> untuk harga &amp; info lebih lanjut!
+              Semua produk tersedia - <span className="text-cyan-400">chat sekarang</span> untuk harga &amp; info lebih lanjut!
             </p>
           </div>
           <a
