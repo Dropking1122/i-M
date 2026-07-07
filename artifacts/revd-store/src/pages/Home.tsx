@@ -9,6 +9,8 @@ import Footer from '@/components/Footer';
 import BottomNav from '@/components/BottomNav';
 import BackToTop from '@/components/BackToTop';
 import ParticleBackground from '@/components/ParticleBackground';
+import NetworkParticles from '@/components/NetworkParticles';
+import GlowDivider from '@/components/GlowDivider';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import CursorGlow from '@/components/CursorGlow';
 
@@ -22,7 +24,10 @@ export default function Home() {
       {/* Cursor glow (desktop only) */}
       <CursorGlow />
 
-      {/* Anime.js floating particles + shooting stars */}
+      {/* Network particles — canvas layer */}
+      <NetworkParticles />
+
+      {/* Floating dots + shooting stars */}
       <ParticleBackground />
 
       {/* Slow-drifting ambient orbs */}
@@ -45,7 +50,7 @@ export default function Home() {
           className="absolute -bottom-[20%] left-[15%] w-[50%] h-[50%] rounded-full blur-[110px]"
           style={{ background: 'radial-gradient(ellipse, rgba(6,182,212,0.08) 0%, transparent 70%)' }}
         />
-        {/* Extra aurora band */}
+        {/* Aurora band */}
         <motion.div
           animate={{ opacity: [0.3, 0.6, 0.3], scaleX: [1, 1.08, 1] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 5 }}
@@ -57,10 +62,28 @@ export default function Home() {
       {/* Content */}
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-grow pb-16 md:pb-0">
+        <main className="flex-grow">
           <Hero />
+
+          <GlowDivider
+            color="rgba(59,130,246,0.5)"
+            color2="rgba(139,92,246,0.5)"
+          />
+
           <Projects />
+
+          <GlowDivider
+            color="rgba(6,182,212,0.5)"
+            color2="rgba(59,130,246,0.5)"
+          />
+
           <Products />
+
+          <GlowDivider
+            color="rgba(139,92,246,0.5)"
+            color2="rgba(16,185,129,0.5)"
+          />
+
           <Contact />
         </main>
         <Footer />
