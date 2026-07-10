@@ -39,7 +39,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="relative mb-8"
         >
-          <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full p-[2px] bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600">
+          <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full p-[2px] bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600">
             <div className="w-full h-full rounded-full bg-[#050810] flex items-center justify-center overflow-hidden">
               {!imgFailed ? (
                 <img
@@ -49,7 +49,7 @@ export default function Hero() {
                   onError={() => setImgFailed(true)}
                 />
               ) : (
-                <span className="text-3xl sm:text-4xl font-black gradient-text-primary tracking-tighter">RV</span>
+                <span className="text-4xl sm:text-5xl font-black gradient-text-primary tracking-tighter">RV</span>
               )}
             </div>
           </div>
@@ -77,7 +77,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.1] mb-4"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.1] mb-4"
         >
           <span className="shiny-text inline-block gradient-text-primary">Revaldi</span>
           <FaCheckCircle

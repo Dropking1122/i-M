@@ -44,7 +44,7 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-md sm:max-w-2xl mx-auto">
           {CONTACTS.map((contact, idx) => (
             <motion.a
               key={idx}
@@ -57,26 +57,26 @@ export default function Contact() {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="block group"
             >
-              <SpotlightCard className="p-5 rounded-2xl border border-white/5 bg-[#0A0F1E]/80 backdrop-blur-xl flex flex-col items-center gap-2.5">
-                <div 
-                  className="w-11 h-11 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-110"
-                  style={{ 
+              <SpotlightCard className="p-3.5 sm:p-4 rounded-xl border border-white/5 bg-[#0A0F1E]/80 backdrop-blur-xl flex sm:flex-col items-center gap-3 sm:gap-2 text-left sm:text-center">
+                <div
+                  className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110"
+                  style={{
                     background: `linear-gradient(135deg, ${contact.color}20, transparent)`,
                     border: `1px solid ${contact.color}40`,
                     color: contact.color
                   }}
                 >
-                  <contact.Icon size={18} />
-                </div>
-                
-                <div className="text-center">
-                  <p className="text-[9px] font-bold text-slate-500 tracking-widest uppercase mb-0.5">{contact.name}</p>
-                  <p className="font-bold text-white text-sm">{contact.handle}</p>
-                  <p className="text-[11px] text-slate-400 mt-1">{contact.desc}</p>
+                  <contact.Icon size={15} />
                 </div>
 
-                <div className="mt-1 w-6 h-6 rounded-full border border-white/10 flex items-center justify-center text-white/50 group-hover:bg-white group-hover:text-black group-hover:border-white transition-all duration-300">
-                  <FaArrowRight size={9} className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+                <div className="flex-1 sm:flex-none min-w-0">
+                  <p className="text-[9px] font-bold text-slate-500 tracking-widest uppercase leading-none">{contact.name}</p>
+                  <p className="font-bold text-white text-sm truncate">{contact.handle}</p>
+                  <p className="text-[10px] text-slate-400 mt-0.5 truncate">{contact.desc}</p>
+                </div>
+
+                <div className="w-5 h-5 rounded-full border border-white/10 flex items-center justify-center text-white/50 shrink-0 group-hover:bg-white group-hover:text-black group-hover:border-white transition-all duration-300">
+                  <FaArrowRight size={8} className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
                 </div>
               </SpotlightCard>
             </motion.a>
