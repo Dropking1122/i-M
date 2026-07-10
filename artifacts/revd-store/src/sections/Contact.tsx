@@ -57,26 +57,26 @@ export default function Contact() {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="block group"
             >
-              <SpotlightCard className="p-8 rounded-[24px] border border-white/5 bg-[#0A0F1E]/80 backdrop-blur-xl flex flex-col items-center gap-4">
+              <SpotlightCard className="p-5 rounded-2xl border border-white/5 bg-[#0A0F1E]/80 backdrop-blur-xl flex flex-col items-center gap-2.5">
                 <div 
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-2 group-hover:scale-110"
+                  className="w-11 h-11 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-110"
                   style={{ 
                     background: `linear-gradient(135deg, ${contact.color}20, transparent)`,
                     border: `1px solid ${contact.color}40`,
                     color: contact.color
                   }}
                 >
-                  <contact.Icon size={28} />
+                  <contact.Icon size={18} />
                 </div>
                 
-                <div>
-                  <p className="text-[10px] font-bold text-slate-500 tracking-widest uppercase mb-1">{contact.name}</p>
-                  <p className="font-bold text-white text-lg">{contact.handle}</p>
-                  <p className="text-xs text-slate-400 mt-2">{contact.desc}</p>
+                <div className="text-center">
+                  <p className="text-[9px] font-bold text-slate-500 tracking-widest uppercase mb-0.5">{contact.name}</p>
+                  <p className="font-bold text-white text-sm">{contact.handle}</p>
+                  <p className="text-[11px] text-slate-400 mt-1">{contact.desc}</p>
                 </div>
 
-                <div className="mt-2 w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/50 group-hover:bg-white group-hover:text-black group-hover:border-white transition-all duration-300">
-                  <FaArrowRight size={10} className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+                <div className="mt-1 w-6 h-6 rounded-full border border-white/10 flex items-center justify-center text-white/50 group-hover:bg-white group-hover:text-black group-hover:border-white transition-all duration-300">
+                  <FaArrowRight size={9} className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
                 </div>
               </SpotlightCard>
             </motion.a>

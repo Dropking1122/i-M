@@ -76,10 +76,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="absolute -bottom-2 -right-4 bg-[#0A0F1E] border border-white/10 px-3 py-1 rounded-full flex items-center gap-2 shadow-xl"
+            className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#0A0F1E] border border-white/10 px-3 py-1.5 rounded-full flex items-center justify-center gap-2 shadow-xl whitespace-nowrap"
           >
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-            <span className="text-[10px] sm:text-xs font-bold text-slate-300">Available for Work</span>
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shrink-0" />
+            <span className="text-[10px] sm:text-xs font-bold text-slate-300 leading-none">Available</span>
           </motion.div>
         </motion.div>
 
