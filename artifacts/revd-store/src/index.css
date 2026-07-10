@@ -110,6 +110,40 @@ body.target-cursor-active * {
   }
 }
 
+/* Hero name: color-shifting shine sweep + soft breathing glow (reactbits style) */
+.hero-name-shine {
+  background: linear-gradient(
+    100deg,
+    var(--accent-cyan) 0%,
+    #ffffff 18%,
+    var(--accent-blue) 38%,
+    #ffffff 55%,
+    var(--accent-purple, #8a2be2) 72%,
+    #ffffff 88%,
+    var(--accent-cyan) 100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hero-name-sweep 6s linear infinite, hero-name-glow 3.2s ease-in-out infinite;
+}
+
+@keyframes hero-name-sweep {
+  to {
+    background-position: 300% center;
+  }
+}
+
+@keyframes hero-name-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.25)) drop-shadow(0 0 18px rgba(0, 71, 255, 0.15));
+  }
+  50% {
+    filter: drop-shadow(0 0 14px rgba(0, 240, 255, 0.5)) drop-shadow(0 0 32px rgba(138, 43, 226, 0.35));
+  }
+}
+
 /* Spotlight Hover Card */
 .spotlight-card {
   position: relative;

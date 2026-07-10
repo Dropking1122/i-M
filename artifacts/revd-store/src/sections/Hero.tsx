@@ -80,7 +80,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.1] mb-4"
         >
-          <span className="shiny-text inline-block gradient-text-primary">Revaldi</span>
+          <span className="hero-name-shine inline-block">Revaldi</span>
           <FaCheckCircle
             className="inline-block ml-2 sm:ml-3 text-blue-500 drop-shadow-[0_0_10px_rgba(59,130,246,0.7)] align-middle"
             style={{ fontSize: 'clamp(1.2rem, 3vw, 2.6rem)' }}
