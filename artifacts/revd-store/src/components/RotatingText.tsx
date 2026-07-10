@@ -24,7 +24,7 @@ export default function RotatingText({ words, className = '', interval = 2200 }:
   }, [words.length, interval]);
 
   return (
-    <span className={`relative inline-block overflow-hidden align-bottom ${className}`}>
+    <span className="relative inline-flex rounded-full px-3.5 py-1 sm:px-4 sm:py-1.5 bg-cyan-400/10 border border-cyan-400/30 shadow-[0_0_20px_-4px_rgba(34,211,238,0.5)] overflow-hidden align-middle">
       <AnimatePresence mode="wait">
         <motion.span
           key={words[index]}
@@ -32,7 +32,7 @@ export default function RotatingText({ words, className = '', interval = 2200 }:
           animate={{ y: '0%', opacity: 1, filter: 'blur(0px)' }}
           exit={{ y: '-100%', opacity: 0, filter: 'blur(6px)' }}
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-block"
+          className={`inline-block ${className}`}
         >
           {words[index]}
         </motion.span>
