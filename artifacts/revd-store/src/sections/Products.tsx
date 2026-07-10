@@ -94,7 +94,7 @@ export default function Products() {
           >
             <MagneticButton 
               as="a" 
-              href="https://wa.me/r6288214672165/" 
+              href="https://wa.me/6288214672165/" 
               target="_blank"
               className="px-6 py-3 text-sm"
               primary
@@ -116,7 +116,7 @@ export default function Products() {
               <SpotlightCard
                 as="button"
                 className="group p-5 rounded-[20px] border border-white/5 bg-[#0A0F1E]/60 backdrop-blur-md flex items-center gap-4 cursor-pointer"
-                onClick={() => window.open('https://wa.me/r6288214672165/', '_blank')}
+                onClick={() => window.open('https://wa.me/6288214672165/', '_blank')}
                 ariaLabel={`Order ${product.name} via WhatsApp`}
               >
                 <ProductIcon product={product} />

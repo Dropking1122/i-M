@@ -11,7 +11,7 @@ const CONTACTS = [
   },
   {
     name: 'WhatsApp', handle: 'REVDSTORE',
-    Icon: FaWhatsapp, url: 'https://wa.me/r6288214672165/',
+    Icon: FaWhatsapp, url: 'https://wa.me/6288214672165/',
     color: '#00F0FF', desc: 'Fast response',
   },
   {
