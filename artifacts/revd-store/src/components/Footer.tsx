@@ -26,8 +26,9 @@ export default function Footer() {
           </a>
         </div>
 
-        <p className="text-slate-500 text-sm font-medium">
-          © {new Date().getFullYear()} REVD. Engineered with intention.
+        <p className="text-slate-500 text-sm font-medium flex items-center justify-center gap-1.5 flex-wrap">
+          <span>© {new Date().getFullYear()} REVDSTORE. Dibuat dengan</span>
+          <span className="text-red-500" aria-label="love">❤</span>
         </p>
       </div>
     </footer>

@@ -79,7 +79,7 @@ export default function Products() {
               <FaGem size={12} /> Premium Subscriptions
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white mb-4">
-              <span className="gradient-text-purple">Digital</span>
+              Produk <span className="gradient-text-purple">Digital</span>
             </h2>
             <p className="text-slate-400 text-sm sm:text-base">
               Akses premium ke aplikasi terbaik untuk kreator dan profesional.

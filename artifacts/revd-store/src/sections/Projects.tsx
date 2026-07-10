@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import {
   FaCashRegister, FaWhatsapp, FaQrcode, FaGraduationCap,
   FaTelegram, FaWifi, FaGift, FaGithub, FaGlobe,
-  FaBook, FaCheck, FaLayerGroup,
+  FaBook, FaCheck, FaLayerGroup, FaEnvelope,
 } from 'react-icons/fa';
 import SpotlightCard from '@/components/SpotlightCard';
 
@@ -71,6 +71,16 @@ const PROJECTS = [
     features: ['Template siap pakai', 'Update berkala', 'Langsung download'],
     links: [
       { label: 'Kunjungi', url: 'https://revdstore.web.id', icon: FaGlobe },
+    ],
+  },
+  {
+    title: 'REVDMAIL', subtitle: 'Temp Mail & Gmail Generator',
+    description: 'Layanan email sementara (tempmail) dan generator Gmail instan untuk kebutuhan verifikasi cepat dan privasi online.',
+    tag: 'Web App', Icon: FaEnvelope,
+    color: '#8A2BE2',
+    features: ['Tempmail sekali pakai', 'Gmail generator instan', 'Tanpa perlu daftar'],
+    links: [
+      { label: 'Kunjungi', url: 'https://mail.revdstore.app', icon: FaGlobe },
     ],
   },
 ];
