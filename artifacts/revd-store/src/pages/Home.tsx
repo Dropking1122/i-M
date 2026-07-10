@@ -5,20 +5,16 @@ import Projects from '@/sections/Projects';
 import Products from '@/sections/Products';
 import Contact from '@/sections/Contact';
 import Footer from '@/components/Footer';
-import BottomNav from '@/components/BottomNav';
 import BackToTop from '@/components/BackToTop';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
-import CursorGlow from '@/components/CursorGlow';
+import TargetCursor from '@/components/TargetCursor';
+import Aurora from '@/components/Aurora';
 
 // Premium Background Composition
 function CinematicBackground() {
   return (
     <div className="fixed inset-0 z-0 pointer-events-none">
-      <div className="aurora-bg">
-        <div className="aurora-blob-1" />
-        <div className="aurora-blob-2" />
-        <div className="aurora-blob-3" />
-      </div>
+      <Aurora />
       <div className="animated-grid" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050810]/50 to-[#050810] pointer-events-none" />
     </div>
@@ -30,7 +26,7 @@ export default function Home() {
     <div className="relative min-h-[100dvh] bg-[#050810] text-slate-200 selection:bg-cyan-400 selection:text-black">
       <div className="noise-overlay" />
       <ScrollProgressBar />
-      <CursorGlow />
+      <TargetCursor />
       <CinematicBackground />
 
       <div className="relative z-10 flex flex-col min-h-screen w-full">
@@ -53,7 +49,6 @@ export default function Home() {
         <Footer />
       </div>
 
-      <BottomNav />
       <BackToTop />
     </div>
   );
