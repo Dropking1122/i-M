@@ -26,10 +26,16 @@ export default function Footer() {
           </a>
         </div>
 
-        <p className="text-slate-500 text-sm font-medium flex items-center justify-center gap-1.5 flex-wrap">
-          <span>© {new Date().getFullYear()} REVDSTORE. Dibuat dengan</span>
-          <span className="text-red-500" aria-label="love">❤</span>
-        </p>
+        <div className="flex flex-col items-center gap-1.5">
+          <p className="text-slate-400 text-sm font-semibold flex items-center justify-center gap-1.5">
+            <span>Made with</span>
+            <span className="text-red-500" aria-label="love">❤</span>
+            <span>by Revaldi</span>
+          </p>
+          <p className="text-slate-600 text-xs font-medium">
+            © {new Date().getFullYear()} REVD STORE. All rights reserved
+          </p>
+        </div>
       </div>
     </footer>
   );
