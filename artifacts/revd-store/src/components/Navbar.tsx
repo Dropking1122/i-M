@@ -4,7 +4,7 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 
 const NAV_LINKS = [
   { name: 'Home', href: '#home', id: 'home' },
-  { name: 'Showcase', href: '#projects', id: 'projects' },
+  { name: 'Dokumentasi', href: '#projects', id: 'projects' },
   { name: 'Products', href: '#products', id: 'products' },
   { name: 'Contact', href: '#contact', id: 'contact' },
 ];
@@ -39,9 +39,9 @@ export default function Navbar() {
             ${scrolled ? 'bg-[#0A0F1E]/80 backdrop-blur-xl border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]' : 'bg-transparent border-transparent'}
           `}>
             
-            <a href="#home" className="text-xl font-black tracking-tighter z-50 flex items-center gap-1">
-              <span className="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-[10px] text-black">RV</span>
-              <span className="text-white">REVD</span>
+            <a href="#home" className="text-xl sm:text-2xl font-black tracking-tighter z-50 select-none">
+              <span className="gradient-text-primary">REVD</span>
+              <span className="text-white">STORE</span>
             </a>
 
             <nav className="hidden md:flex items-center gap-2">

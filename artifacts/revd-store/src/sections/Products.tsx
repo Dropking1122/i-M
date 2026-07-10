@@ -1,17 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaVideo, FaPaintBrush, FaTv, FaFilm, FaShieldAlt, FaPlay, FaWhatsapp, FaGem, FaArrowRight } from 'react-icons/fa';
 import SpotlightCard from '@/components/SpotlightCard';
 import MagneticButton from '@/components/MagneticButton';
 
 const PRODUCTS = [
-  { name: 'CapCut Pro Private',  desc: 'Premium video editing',      Icon: FaVideo,     color: '#FF0055', badge: 'HOT'  },
-  { name: 'Canva Pro',           desc: 'Design professional',        Icon: FaPaintBrush,color: '#00F0FF', badge: 'BEST' },
-  { name: 'VIU Private',         desc: 'Premium streaming',          Icon: FaTv,        color: '#0047FF'                },
-  { name: 'Alight Motion',       desc: 'Motion graphics editor',     Icon: FaFilm,      color: '#8A2BE2', badge: 'NEW'  },
-  { name: 'VPN Tunneling',       desc: 'Secure & fast connection',   Icon: FaShieldAlt, color: '#00F0FF'                },
-  { name: 'Vidio Private',       desc: 'Premium streaming access',   Icon: FaPlay,      color: '#FF0055', badge: 'HOT'  },
+  { name: 'CapCut Pro Private',  desc: 'Premium video editing',      Icon: FaVideo,     color: '#FF0055', badge: 'HOT',  img: '/products/capcut.png'       },
+  { name: 'Canva Pro',           desc: 'Design professional',        Icon: FaPaintBrush,color: '#00F0FF', badge: 'BEST', img: '/products/canva.png'        },
+  { name: 'VIU Private',         desc: 'Premium streaming',          Icon: FaTv,        color: '#0047FF',                img: '/products/viu.png'          },
+  { name: 'Alight Motion',       desc: 'Motion graphics editor',     Icon: FaFilm,      color: '#8A2BE2', badge: 'NEW',  img: '/products/alightmotion.png' },
+  { name: 'VPN Tunneling',       desc: 'Secure & fast connection',   Icon: FaShieldAlt, color: '#00F0FF',                img: '/products/vpn.jpg'          },
+  { name: 'Vidio Private',       desc: 'Premium streaming access',   Icon: FaPlay,      color: '#FF0055', badge: 'HOT',  img: '/products/vidio.png'        },
 ];
+
+function ProductIcon({ product }: { product: typeof PRODUCTS[number] }) {
+  const [imgFailed, setImgFailed] = useState(false);
+
+  if (product.img && !imgFailed) {
+    return (
+      <div
+        className="relative w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110 bg-white overflow-hidden"
+        style={{ boxShadow: `0 4px 16px ${product.color}40` }}
+      >
+        <img
+          src={product.img}
+          alt={product.name}
+          className="w-full h-full object-contain p-1.5"
+          onError={() => setImgFailed(true)}
+        />
+        {product.badge && (
+          <span
+            className="absolute -top-2 -right-2 text-[8px] font-black px-2 py-0.5 rounded-full text-white"
+            style={{ background: product.color, boxShadow: `0 2px 10px ${product.color}80` }}
+          >
+            {product.badge}
+          </span>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className="relative w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+      style={{
+        background: `linear-gradient(135deg, ${product.color}20, transparent)`,
+        border: `1px solid ${product.color}40`,
+        color: product.color
+      }}
+    >
+      <product.Icon size={24} />
+      {product.badge && (
+        <span
+          className="absolute -top-2 -right-2 text-[8px] font-black px-2 py-0.5 rounded-full text-white"
+          style={{ background: product.color, boxShadow: `0 2px 10px ${product.color}80` }}
+        >
+          {product.badge}
+        </span>
+      )}
+    </div>
+  );
+}
 
 export default function Products() {
   return (
@@ -70,24 +119,7 @@ export default function Products() {
                 onClick={() => window.open('https://wa.me/r6288214672165/', '_blank')}
                 ariaLabel={`Order ${product.name} via WhatsApp`}
               >
-                <div 
-                  className="relative w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
-                  style={{ 
-                    background: `linear-gradient(135deg, ${product.color}20, transparent)`,
-                    border: `1px solid ${product.color}40`,
-                    color: product.color
-                  }}
-                >
-                  <product.Icon size={24} />
-                  {product.badge && (
-                    <span 
-                      className="absolute -top-2 -right-2 text-[8px] font-black px-2 py-0.5 rounded-full text-white"
-                      style={{ background: product.color, boxShadow: `0 2px 10px ${product.color}80` }}
-                    >
-                      {product.badge}
-                    </span>
-                  )}
-                </div>
+                <ProductIcon product={product} />
 
                 <div className="flex-1 min-w-0">
                   <h3 className="font-bold text-white text-base truncate group-hover:text-cyan-400 transition-colors">
