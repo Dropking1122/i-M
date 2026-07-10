@@ -128,8 +128,6 @@ export default function Aurora({
     const container = containerRef.current;
     if (!container) return;
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     let renderer: Renderer;
     try {
       renderer = new Renderer({ alpha: true, premultipliedAlpha: true, antialias: true });
@@ -206,9 +204,6 @@ export default function Aurora({
         program.uniforms.uBlend.value = propsRef.current.blend;
         program.uniforms.uColorStops.value = normalizeStops(propsRef.current.colorStops);
         renderer.render({ scene: mesh });
-      }
-      if (prefersReducedMotion) {
-        cancelAnimationFrame(animateId);
       }
     };
 

@@ -15,7 +15,6 @@ function CinematicBackground() {
   return (
     <div className="fixed inset-0 z-0 pointer-events-none">
       <Aurora />
-      <div className="animated-grid" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050810]/50 to-[#050810] pointer-events-none" />
     </div>
   );
@@ -24,7 +23,6 @@ function CinematicBackground() {
 export default function Home() {
   return (
     <div className="relative min-h-[100dvh] bg-[#050810] text-slate-200 selection:bg-cyan-400 selection:text-black">
-      <div className="noise-overlay" />
       <ScrollProgressBar />
       <TargetCursor />
       <CinematicBackground />
