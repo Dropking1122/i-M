@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   FaInstagram, FaWhatsapp, FaTelegram, FaGithub,
   FaEnvelope, FaArrowRight, FaCheckCircle, FaStar
 } from 'react-icons/fa';
 import MagneticButton from '@/components/MagneticButton';
-import DecryptedText from '@/components/DecryptedText';
+import BlurText from '@/components/BlurText';
+import RotatingText from '@/components/RotatingText';
 
 const SOCIALS = [
   { Icon: FaInstagram, href: 'https://instagram.com/revd.cloud',    label: 'Instagram' },
@@ -26,27 +27,7 @@ const TITLES = ['Digital Seller', 'Networking', 'Tech Enthusiast', 'Problem Solv
 const AVATAR_PHOTO = '/avatar.jpg';
 
 export default function Hero() {
-  const [titleIdx, setTitleIdx] = useState(0);
-  const [titleText, setTitleText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
   const [imgFailed, setImgFailed] = useState(false);
-
-  useEffect(() => {
-    const cur = TITLES[titleIdx];
-    if (!isDeleting && titleText === cur) {
-      const t = setTimeout(() => setIsDeleting(true), 2000);
-      return () => clearTimeout(t);
-    }
-    if (isDeleting && titleText === '') {
-      setIsDeleting(false);
-      setTitleIdx((i) => (i + 1) % TITLES.length);
-      return;
-    }
-    const t = setTimeout(() => {
-      setTitleText(cur.substring(0, titleText.length + (isDeleting ? -1 : 1)));
-    }, isDeleting ? 45 : 95);
-    return () => clearTimeout(t);
-  }, [titleText, isDeleting, titleIdx]);
 
   return (
     <section id="home" className="min-h-[100svh] flex flex-col justify-center pt-24 pb-16 px-4 sm:px-6 relative z-10">
@@ -112,8 +93,7 @@ export default function Hero() {
           className="flex items-center justify-center gap-1 h-8 sm:h-10 mb-6"
         >
           <span className="text-base sm:text-xl font-medium text-slate-300">I am a&nbsp;</span>
-          <span className="text-base sm:text-xl font-bold text-cyan-400">{titleText}</span>
-          <span className="inline-block w-0.5 h-4 sm:h-5 bg-cyan-400 animate-pulse" />
+          <RotatingText words={TITLES} className="text-base sm:text-xl font-bold text-cyan-400" />
         </motion.div>
 
         <motion.p
@@ -122,10 +102,9 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-sm sm:text-base md:text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed font-medium"
         >
-          <DecryptedText
+          <BlurText
             text="Digital entrepreneur & tech enthusiast. Menyediakan produk digital premium dan solusi web inovatif. Mari terhubung!"
             delay={800}
-            speed={30}
           />
         </motion.p>
 
