@@ -7,50 +7,47 @@ import Contact from '@/sections/Contact';
 import Footer from '@/components/Footer';
 import BottomNav from '@/components/BottomNav';
 import BackToTop from '@/components/BackToTop';
-import MeshBackground from '@/components/MeshBackground';
-import ParticleBackground from '@/components/ParticleBackground';
-import GlowDivider from '@/components/GlowDivider';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import CursorGlow from '@/components/CursorGlow';
 
+// Premium Background Composition
+function CinematicBackground() {
+  return (
+    <div className="fixed inset-0 z-0 pointer-events-none">
+      <div className="aurora-bg">
+        <div className="aurora-blob-1" />
+        <div className="aurora-blob-2" />
+        <div className="aurora-blob-3" />
+      </div>
+      <div className="animated-grid" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050810]/50 to-[#050810] pointer-events-none" />
+    </div>
+  );
+}
+
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-[#0a0e1a] overflow-x-hidden text-slate-200">
-
+    <div className="relative min-h-[100dvh] bg-[#050810] text-slate-200 selection:bg-cyan-400 selection:text-black">
+      <div className="noise-overlay" />
       <ScrollProgressBar />
       <CursorGlow />
+      <CinematicBackground />
 
-      {/* CSS-only animated mesh - zero JS, GPU-composited */}
-      <MeshBackground />
-
-      {/* Lightweight floating dots (20 max, no shooting stars) */}
-      <ParticleBackground />
-
-      {/* Content */}
-      <div className="relative z-10 flex flex-col min-h-screen">
+      <div className="relative z-10 flex flex-col min-h-screen w-full">
         <Navbar />
-        <main className="flex-grow">
+        <main className="flex-grow w-full overflow-hidden">
           <Hero />
-
-          <GlowDivider
-            color="rgba(59,130,246,0.5)"
-            color2="rgba(139,92,246,0.5)"
-          />
-
+          
+          <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent my-10" />
+          
           <Projects />
-
-          <GlowDivider
-            color="rgba(6,182,212,0.5)"
-            color2="rgba(59,130,246,0.5)"
-          />
-
+          
+          <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-purple-500/20 to-transparent my-10" />
+          
           <Products />
-
-          <GlowDivider
-            color="rgba(139,92,246,0.5)"
-            color2="rgba(16,185,129,0.5)"
-          />
-
+          
+          <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-blue-500/20 to-transparent my-10" />
+          
           <Contact />
         </main>
         <Footer />
