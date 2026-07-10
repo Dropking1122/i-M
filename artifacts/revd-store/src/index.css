@@ -110,37 +110,41 @@ body.target-cursor-active * {
   }
 }
 
-/* Hero name: color-shifting shine sweep + soft breathing glow (reactbits style) */
+/* Hero name: clean cyan-blue shine sweep + soft breathing glow (reactbits style) */
 .hero-name-shine {
   background: linear-gradient(
     100deg,
-    var(--accent-cyan) 0%,
-    #ffffff 18%,
-    var(--accent-blue) 38%,
-    #ffffff 55%,
-    var(--accent-purple, #8a2be2) 72%,
-    #ffffff 88%,
-    var(--accent-cyan) 100%
+    #e6fdff 0%,
+    var(--accent-cyan) 22%,
+    var(--accent-blue) 50%,
+    var(--accent-cyan) 78%,
+    #e6fdff 100%
   );
-  background-size: 300% auto;
+  background-size: 220% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: hero-name-sweep 6s linear infinite, hero-name-glow 3.2s ease-in-out infinite;
+  animation: hero-name-sweep 5s ease-in-out infinite, hero-name-glow 3.2s ease-in-out infinite;
 }
 
 @keyframes hero-name-sweep {
-  to {
-    background-position: 300% center;
+  0% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: 0% center;
   }
 }
 
 @keyframes hero-name-glow {
   0%, 100% {
-    filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.25)) drop-shadow(0 0 18px rgba(0, 71, 255, 0.15));
+    filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.3));
   }
   50% {
-    filter: drop-shadow(0 0 14px rgba(0, 240, 255, 0.5)) drop-shadow(0 0 32px rgba(138, 43, 226, 0.35));
+    filter: drop-shadow(0 0 18px rgba(0, 240, 255, 0.55)) drop-shadow(0 0 30px rgba(0, 71, 255, 0.25));
   }
 }
 
