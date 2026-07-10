@@ -7,6 +7,7 @@ import {
 import MagneticButton from '@/components/MagneticButton';
 import BlurText from '@/components/BlurText';
 import RotatingText from '@/components/RotatingText';
+import TiltedCard from '@/components/TiltedCard';
 
 const SOCIALS = [
   { Icon: FaInstagram, href: 'https://instagram.com/revd.cloud',    label: 'Instagram' },
@@ -39,7 +40,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="relative mb-8"
         >
-          <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full p-[2px] bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600">
+          <TiltedCard className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full p-[2px] bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 cursor-pointer">
             <div className="w-full h-full rounded-full bg-[#050810] flex items-center justify-center overflow-hidden">
               {!imgFailed ? (
                 <img
@@ -52,7 +53,7 @@ export default function Hero() {
                 <span className="text-4xl sm:text-5xl font-black gradient-text-primary tracking-tighter">RV</span>
               )}
             </div>
-          </div>
+          </TiltedCard>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
