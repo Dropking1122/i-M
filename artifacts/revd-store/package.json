@@ -75,6 +75,7 @@
     "zod": "catalog:"
   },
   "dependencies": {
-    "animejs": "^4.5.0"
+    "animejs": "^4.5.0",
+    "ogl": "^1.0.11"
   }
 }
