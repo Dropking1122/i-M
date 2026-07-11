@@ -129,7 +129,7 @@ body.target-cursor-active * {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: hero-name-sweep 6s linear infinite, hero-name-glow 3.2s ease-in-out infinite;
+  animation: hero-name-sweep 12s ease-in-out infinite alternate, hero-name-glow 4.5s ease-in-out infinite;
 }
 
 /* soft blurred duplicate glowing behind the text for extra "magic" depth */
