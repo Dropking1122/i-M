@@ -16,6 +16,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState('home');
   const [imgFailed, setImgFailed] = useState(false);
+  const [showLogoAvatar, setShowLogoAvatar] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -31,6 +32,22 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Only show the small avatar in the navbar once the big hero profile photo
+  // has scrolled out of view -- avoids showing the same face twice at once.
+  useEffect(() => {
+    const heroAvatar = document.getElementById('hero-avatar');
+    if (!heroAvatar) {
+      setShowLogoAvatar(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => setShowLogoAvatar(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(heroAvatar);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -43,22 +60,32 @@ export default function Navbar() {
           `}>
             
             <a href="#home" className="text-xl sm:text-2xl font-black tracking-tighter z-50 select-none flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full overflow-hidden border border-cyan-400/40 shadow-[0_0_10px_rgba(0,240,255,0.3)] shrink-0">
-                {!imgFailed ? (
-                  <img
-                    src={AVATAR_PHOTO}
-                    alt="Revaldi"
-                    className="w-full h-full object-cover"
-                    onError={() => setImgFailed(true)}
-                  />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center p-[1.5px]">
-                    <div className="w-full h-full bg-[#050810] rounded-full flex items-center justify-center">
-                      <span className="text-[10px] font-black text-white">RV</span>
-                    </div>
-                  </div>
+              <AnimatePresence initial={false}>
+                {showLogoAvatar && (
+                  <motion.div
+                    initial={{ width: 0, opacity: 0, scale: 0.6, marginRight: 0 }}
+                    animate={{ width: 32, opacity: 1, scale: 1, marginRight: 8 }}
+                    exit={{ width: 0, opacity: 0, scale: 0.6, marginRight: 0 }}
+                    transition={{ duration: 0.35, ease: 'easeOut' }}
+                    className="h-8 rounded-full overflow-hidden border border-cyan-400/40 shadow-[0_0_10px_rgba(0,240,255,0.3)] shrink-0"
+                  >
+                    {!imgFailed ? (
+                      <img
+                        src={AVATAR_PHOTO}
+                        alt="Revaldi"
+                        className="w-8 h-8 object-cover"
+                        onError={() => setImgFailed(true)}
+                      />
+                    ) : (
+                      <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center p-[1.5px]">
+                        <div className="w-full h-full bg-[#050810] rounded-full flex items-center justify-center">
+                          <span className="text-[10px] font-black text-white">RV</span>
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
                 )}
-              </div>
+              </AnimatePresence>
               <div>
                 <span className="gradient-text-primary">REVD</span>
                 <span className="text-white">STORE</span>

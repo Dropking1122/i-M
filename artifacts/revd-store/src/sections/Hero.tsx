@@ -41,6 +41,7 @@ export default function Hero() {
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center text-center relative z-10">
 
         <motion.div
+          id="hero-avatar"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
