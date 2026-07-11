@@ -9,6 +9,7 @@ import BackToTop from '@/components/BackToTop';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import TargetCursor from '@/components/TargetCursor';
 import Aurora from '@/components/Aurora';
+import ClickSpark from '@/components/ClickSpark';
 
 // Premium Background Composition
 function CinematicBackground() {
@@ -37,6 +38,7 @@ export default function Home() {
     <div className="relative min-h-[100dvh] bg-[#050810] text-slate-200 selection:bg-cyan-400 selection:text-black">
       <ScrollProgressBar />
       <TargetCursor />
+      <ClickSpark sparkColor="#00F0FF" sparkRadius={40} sparkCount={10} />
       <CinematicBackground />
 
       <div className="relative z-10 flex flex-col min-h-screen w-full">

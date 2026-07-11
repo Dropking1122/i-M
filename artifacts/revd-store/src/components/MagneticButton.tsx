@@ -37,6 +37,15 @@ export default function MagneticButton({
     setPosition({ x: 0, y: 0 });
   };
 
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    if (primary) {
+      document.dispatchEvent(new CustomEvent('trigger-spark', { 
+        detail: { x: e.clientX, y: e.clientY } 
+      }));
+    }
+    if (onClick) onClick(e);
+  };
+
   const Component = as as any;
 
   return (
@@ -54,7 +63,7 @@ export default function MagneticButton({
           href={href}
           target={target}
           rel={rel}
-          onClick={onClick}
+          onClick={handleClick}
           className={`
             relative overflow-hidden rounded-full font-sans font-semibold tracking-wide
             flex items-center justify-center gap-2 transition-all duration-300

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
+const AVATAR_PHOTO = '/avatar.jpg';
+
 const NAV_LINKS = [
   { name: 'Home', href: '#home', id: 'home' },
   { name: 'Dokumentasi', href: '#projects', id: 'projects' },
@@ -13,6 +15,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState('home');
+  const [imgFailed, setImgFailed] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -35,15 +38,26 @@ export default function Navbar() {
       }`}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className={`
-            flex items-center justify-between px-6 py-3 rounded-[2rem] transition-all duration-500
+            flex items-center justify-between px-6 py-3 rounded-2xl transition-all duration-500
             ${scrolled ? 'bg-[#0A0F1E]/80 backdrop-blur-xl border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]' : 'bg-transparent border-transparent'}
           `}>
             
             <a href="#home" className="text-xl sm:text-2xl font-black tracking-tighter z-50 select-none flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center p-[1.5px]">
-                <div className="w-full h-full bg-[#050810] rounded-full flex items-center justify-center">
-                  <span className="text-[10px] font-black text-white">RV</span>
-                </div>
+              <div className="w-8 h-8 rounded-full overflow-hidden border border-cyan-400/40 shadow-[0_0_10px_rgba(0,240,255,0.3)] shrink-0">
+                {!imgFailed ? (
+                  <img
+                    src={AVATAR_PHOTO}
+                    alt="Revaldi"
+                    className="w-full h-full object-cover"
+                    onError={() => setImgFailed(true)}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center p-[1.5px]">
+                    <div className="w-full h-full bg-[#050810] rounded-full flex items-center justify-center">
+                      <span className="text-[10px] font-black text-white">RV</span>
+                    </div>
+                  </div>
+                )}
               </div>
               <div>
                 <span className="gradient-text-primary">REVD</span>
@@ -51,20 +65,20 @@ export default function Navbar() {
               </div>
             </a>
 
-            <nav className="hidden md:flex items-center gap-1 bg-white/5 p-1 rounded-full border border-white/5">
+            <nav className="hidden md:flex items-center gap-1 bg-white/5 p-1 rounded-xl border border-white/5">
               {NAV_LINKS.map(({ name, href, id }) => (
                 <a
                   key={id}
                   href={href}
                   className={`
-                    relative px-5 py-2 rounded-full text-sm font-bold transition-all duration-300
+                    relative px-5 py-2 rounded-lg text-sm font-bold transition-all duration-300
                     ${activeId === id ? 'text-white' : 'text-slate-400 hover:text-white hover:bg-white/5'}
                   `}
                 >
                   {activeId === id && (
                     <motion.div 
                       layoutId="nav-pill"
-                      className="absolute inset-0 bg-white/10 rounded-full"
+                      className="absolute inset-0 bg-white/10 rounded-lg"
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     />
                   )}
@@ -74,7 +88,7 @@ export default function Navbar() {
             </nav>
 
             <button 
-              className="md:hidden w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white z-50 hover:bg-white/10 transition-colors"
+              className="md:hidden w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white z-50 hover:bg-white/10 transition-colors"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={menuOpen}

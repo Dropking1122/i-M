@@ -8,6 +8,8 @@ import MagneticButton from '@/components/MagneticButton';
 import BlurText from '@/components/BlurText';
 import RotatingText from '@/components/RotatingText';
 import TiltedCard from '@/components/TiltedCard';
+import CountUp from '@/components/CountUp';
+import StarBorder from '@/components/StarBorder';
 
 const SOCIALS = [
   { Icon: FaInstagram, href: 'https://instagram.com/revd.cloud',    label: 'Instagram' },
@@ -18,9 +20,9 @@ const SOCIALS = [
 ];
 
 const STATS = [
-  { label: 'Projects',  target: '10+'  },
-  { label: 'Years Exp', target: '3+'   },
-  { label: 'Clients',   target: '200+' },
+  { label: 'Projects',  target: 10, suffix: '+'  },
+  { label: 'Years Exp', target: 3,  suffix: '+'  },
+  { label: 'Clients',   target: 200, suffix: '+' },
 ];
 
 const TITLES = ['Digital Seller', 'Networking', 'Tech Enthusiast', 'Problem Solver', 'Creative Mind'];
@@ -63,10 +65,14 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[#0A0F1E]/90 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full flex items-center justify-center gap-2.5 shadow-2xl whitespace-nowrap"
+            className="absolute -bottom-3 left-1/2 -translate-x-1/2"
           >
-            <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shrink-0 shadow-[0_0_8px_#00F0FF]" />
-            <span className="text-[10px] sm:text-xs font-bold text-slate-200 uppercase tracking-wider leading-none mt-0.5">Available</span>
+            <StarBorder color="#00F0FF" speed="4s" className="rounded-full shadow-2xl">
+              <div className="bg-[#0A0F1E]/90 backdrop-blur-md px-4 py-2 rounded-full flex items-center justify-center gap-2.5 whitespace-nowrap">
+                <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shrink-0 shadow-[0_0_8px_#00F0FF]" />
+                <span className="text-[10px] sm:text-xs font-bold text-slate-200 uppercase tracking-wider leading-none mt-0.5">Available</span>
+              </div>
+            </StarBorder>
           </motion.div>
         </motion.div>
 
@@ -96,7 +102,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex items-center justify-center gap-1.5 h-8 sm:h-12 mb-8 bg-white/5 border border-white/10 rounded-full px-6 py-2 backdrop-blur-sm"
+          className="flex items-center justify-center gap-2 mb-8"
         >
           <span className="text-sm sm:text-lg font-medium text-slate-300">I am a</span>
           <RotatingText words={TITLES} className="text-sm sm:text-lg font-bold text-cyan-400 ml-1" />
@@ -149,7 +155,7 @@ export default function Hero() {
             <div key={i} className="flex flex-col items-center justify-center p-6 sm:p-10 bg-[#0A0F1E]/80 hover:bg-[#0A0F1E]/60 transition-colors relative group">
               <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <span className="text-3xl sm:text-5xl md:text-6xl font-display font-black text-white mb-2 sm:mb-3 tracking-tighter drop-shadow-md">
-                {stat.target}
+                <CountUp to={stat.target as number} suffix={stat.suffix} delay={0.8 + i * 0.2} />
               </span>
               <span className="text-[9px] sm:text-xs font-bold text-slate-400 uppercase tracking-[0.25em]">
                 {stat.label}

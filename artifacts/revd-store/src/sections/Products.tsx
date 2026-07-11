@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { FaVideo, FaPaintBrush, FaTv, FaFilm, FaShieldAlt, FaPlay, FaWhatsapp, FaGem, FaArrowRight } from 'react-icons/fa';
 import SpotlightCard from '@/components/SpotlightCard';
 import MagneticButton from '@/components/MagneticButton';
+import GradientText from '@/components/GradientText';
 
 const PRODUCTS = [
   { name: 'CapCut Pro Private',  desc: 'Premium video editing',      Icon: FaVideo,     color: '#FF0055', badge: 'HOT',  img: '/products/capcut.png'       },
@@ -76,8 +77,10 @@ export default function Products() {
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/20 bg-purple-500/10 text-purple-400 text-xs font-bold tracking-widest mb-6 uppercase shadow-[0_0_15px_rgba(138,43,226,0.15)]">
-              <FaGem size={12} /> Premium Subscriptions
+            <div className="mb-6">
+              <GradientText colors={["#8A2BE2", "#FF0055", "#8A2BE2"]} animationSpeed={4} showBorder={true} className="px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase shadow-[0_0_15px_rgba(138,43,226,0.15)] bg-purple-500/10">
+                <span className="flex items-center gap-2"><FaGem size={12} /> Premium Subscriptions</span>
+              </GradientText>
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-white mb-6">
               Produk <span className="gradient-text-purple">Digital</span>

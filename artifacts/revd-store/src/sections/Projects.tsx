@@ -6,6 +6,7 @@ import {
   FaBook, FaCheck, FaLayerGroup, FaEnvelope, FaArrowRight
 } from 'react-icons/fa';
 import SpotlightCard from '@/components/SpotlightCard';
+import GradientText from '@/components/GradientText';
 
 const PROJECTS = [
   {
@@ -98,8 +99,10 @@ export default function Projects() {
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
         >
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/10 text-blue-400 text-xs font-bold tracking-widest mb-6 uppercase shadow-[0_0_15px_rgba(0,71,255,0.15)]">
-              <FaLayerGroup size={12} /> Featured Work
+            <div className="mb-6">
+              <GradientText colors={["#0047FF", "#00F0FF", "#0047FF"]} animationSpeed={4} showBorder={true} className="px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase shadow-[0_0_15px_rgba(0,71,255,0.15)] bg-blue-500/10">
+                <span className="flex items-center gap-2"><FaLayerGroup size={12} /> Featured Work</span>
+              </GradientText>
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-white mb-6">
               Project <span className="gradient-text-primary">Showcase</span>
