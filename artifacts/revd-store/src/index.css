@@ -110,98 +110,100 @@ body.target-cursor-active * {
   }
 }
 
-/* Hero name: solid color (no gradient) + occasional subtle RGB-split "glitch" pulse
-   (reactbits "Glitch Text" style) with a steady cyan glow underneath. */
-.hero-name-shine {
+/* Hero name: reactbits "Animated Gradient Text" component, adapted for a heading
+   instead of a pill badge (no border ring / backdrop, just the flowing gradient text). */
+.animated-gradient-text {
   position: relative;
+  margin: 0 auto;
+  display: flex;
+  max-width: fit-content;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.25rem;
+  font-weight: 500;
+  transition: box-shadow 0.5s ease-out;
+  overflow: hidden;
+  cursor: default;
+}
+
+.animated-gradient-text.with-border {
+  padding: 0.35rem 0.75rem;
+  backdrop-filter: blur(10px);
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gradient-overlay::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: inherit;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #120f17;
+  z-index: -1;
+}
+
+.text-content {
   display: inline-block;
-  color: #eafdff;
-  text-shadow: 0 0 18px rgba(0, 240, 255, 0.45), 0 0 36px rgba(0, 113, 255, 0.2);
+  position: relative;
+  z-index: 2;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Hero-specific gradient + slow flowing animation + soft glow */
+.hero-name-shine .gradient-overlay,
+.hero-name-shine .text-content {
+  background-image: linear-gradient(
+    90deg,
+    var(--accent-cyan) 0%,
+    #4fa8ff 25%,
+    var(--accent-blue) 50%,
+    var(--accent-purple) 75%,
+    var(--accent-cyan) 100%
+  );
+  background-size: 300% 100%;
+  animation: hero-name-gradient-flow 14s linear infinite;
+}
+
+.hero-name-shine {
+  display: inline-flex;
+  vertical-align: bottom;
+  filter: drop-shadow(0 0 14px rgba(0, 240, 255, 0.35)) drop-shadow(0 0 28px rgba(0, 113, 255, 0.2));
   animation: hero-name-glow 5s ease-in-out infinite;
 }
 
-.hero-name-shine::before,
-.hero-name-shine::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-}
-
-.hero-name-shine::before {
-  color: var(--accent-cyan);
-  mix-blend-mode: screen;
-  animation: hero-name-glitch-1 7s ease-in-out infinite;
-}
-
-.hero-name-shine::after {
-  color: var(--accent-pink);
-  mix-blend-mode: screen;
-  animation: hero-name-glitch-2 7s ease-in-out infinite;
-}
-
-@keyframes hero-name-glitch-1 {
-  0%, 90%, 100% {
-    opacity: 0;
-    transform: translate(0, 0);
-    clip-path: inset(0 0 0 0);
+@keyframes hero-name-gradient-flow {
+  0% {
+    background-position: 0% 50%;
   }
-  91% {
-    opacity: 0.8;
-    transform: translate(-3px, 1px);
-    clip-path: inset(10% 0 55% 0);
-  }
-  92.5% {
-    opacity: 0.7;
-    transform: translate(2px, -1px);
-    clip-path: inset(55% 0 15% 0);
-  }
-  94% {
-    opacity: 0.5;
-    transform: translate(-2px, 0);
-    clip-path: inset(30% 0 40% 0);
-  }
-  95.5% {
-    opacity: 0;
-    transform: translate(0, 0);
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-@keyframes hero-name-glitch-2 {
-  0%, 90%, 100% {
-    opacity: 0;
-    transform: translate(0, 0);
-    clip-path: inset(0 0 0 0);
-  }
-  91% {
-    opacity: 0.7;
-    transform: translate(3px, -1px);
-    clip-path: inset(60% 0 10% 0);
-  }
-  92.5% {
-    opacity: 0.6;
-    transform: translate(-2px, 1px);
-    clip-path: inset(15% 0 60% 0);
-  }
-  94% {
-    opacity: 0.4;
-    transform: translate(2px, 0);
-    clip-path: inset(40% 0 30% 0);
-  }
-  95.5% {
-    opacity: 0;
-    transform: translate(0, 0);
-    clip-path: inset(0 0 0 0);
+  100% {
+    background-position: 300% 50%;
   }
 }
 
 @keyframes hero-name-glow {
   0%, 100% {
-    text-shadow: 0 0 14px rgba(0, 240, 255, 0.4), 0 0 30px rgba(0, 113, 255, 0.18);
+    filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.3)) drop-shadow(0 0 24px rgba(0, 113, 255, 0.16));
   }
   50% {
-    text-shadow: 0 0 22px rgba(0, 240, 255, 0.6), 0 0 44px rgba(0, 113, 255, 0.3);
+    filter: drop-shadow(0 0 18px rgba(0, 240, 255, 0.5)) drop-shadow(0 0 34px rgba(138, 43, 226, 0.25));
   }
 }
 
