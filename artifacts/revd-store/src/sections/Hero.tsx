@@ -11,7 +11,7 @@ import TiltedCard from '@/components/TiltedCard';
 
 const SOCIALS = [
   { Icon: FaInstagram, href: 'https://instagram.com/revd.cloud',    label: 'Instagram' },
-  { Icon: FaWhatsapp,  href: 'https://wa.me/revdstore/',            label: 'WhatsApp' },
+  { Icon: FaWhatsapp,  href: 'https://wa.me/6288214672165/',        label: 'WhatsApp' },
   { Icon: FaTelegram,  href: 'https://t.me/ValltzID',               label: 'Telegram' },
   { Icon: FaGithub,    href: 'https://github.com/Dropking1122',     label: 'GitHub' },
   { Icon: FaEnvelope,  href: 'mailto:me@revdstore.web.id',          label: 'Email' },
@@ -119,7 +119,7 @@ export default function Hero() {
             View Products <FaArrowRight size={12} />
           </MagneticButton>
 
-          <MagneticButton as="a" href="https://wa.me/revdstore/" target="_blank" className="px-8 py-4 text-sm sm:text-base">
+          <MagneticButton as="a" href="https://wa.me/6288214672165/" target="_blank" className="px-8 py-4 text-sm sm:text-base">
             <FaWhatsapp size={16} className="text-green-400" /> Contact Me
           </MagneticButton>
 
