@@ -35,23 +35,30 @@ export default function Navbar() {
       }`}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className={`
-            flex items-center justify-between px-6 py-3 rounded-full transition-all duration-500
+            flex items-center justify-between px-6 py-3 rounded-[2rem] transition-all duration-500
             ${scrolled ? 'bg-[#0A0F1E]/80 backdrop-blur-xl border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]' : 'bg-transparent border-transparent'}
           `}>
             
-            <a href="#home" className="text-xl sm:text-2xl font-black tracking-tighter z-50 select-none">
-              <span className="gradient-text-primary">REVD</span>
-              <span className="text-white">STORE</span>
+            <a href="#home" className="text-xl sm:text-2xl font-black tracking-tighter z-50 select-none flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center p-[1.5px]">
+                <div className="w-full h-full bg-[#050810] rounded-full flex items-center justify-center">
+                  <span className="text-[10px] font-black text-white">RV</span>
+                </div>
+              </div>
+              <div>
+                <span className="gradient-text-primary">REVD</span>
+                <span className="text-white">STORE</span>
+              </div>
             </a>
 
-            <nav className="hidden md:flex items-center gap-2">
+            <nav className="hidden md:flex items-center gap-1 bg-white/5 p-1 rounded-full border border-white/5">
               {NAV_LINKS.map(({ name, href, id }) => (
                 <a
                   key={id}
                   href={href}
                   className={`
-                    relative px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300
-                    ${activeId === id ? 'text-white' : 'text-slate-400 hover:text-white'}
+                    relative px-5 py-2 rounded-full text-sm font-bold transition-all duration-300
+                    ${activeId === id ? 'text-white' : 'text-slate-400 hover:text-white hover:bg-white/5'}
                   `}
                 >
                   {activeId === id && (
@@ -67,7 +74,7 @@ export default function Navbar() {
             </nav>
 
             <button 
-              className="md:hidden w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white z-50"
+              className="md:hidden w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white z-50 hover:bg-white/10 transition-colors"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={menuOpen}
@@ -86,13 +93,13 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-40 bg-[#050810]/95 backdrop-blur-3xl flex flex-col items-center justify-center md:hidden"
           >
-            <div className="flex flex-col gap-6 text-center">
+            <div className="flex flex-col gap-8 text-center">
               {NAV_LINKS.map(({ name, href, id }) => (
                 <a
                   key={id}
                   href={href}
                   onClick={() => setMenuOpen(false)}
-                  className={`text-3xl font-black tracking-tight ${activeId === id ? 'gradient-text-primary' : 'text-slate-500'}`}
+                  className={`text-4xl font-black tracking-tight ${activeId === id ? 'gradient-text-primary' : 'text-slate-500 hover:text-white transition-colors'}`}
                 >
                   {name}
                 </a>

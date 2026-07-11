@@ -15,7 +15,19 @@ function CinematicBackground() {
   return (
     <div className="fixed inset-0 z-0 pointer-events-none">
       <Aurora />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050810]/50 to-[#050810] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#050810]/30 via-[#050810]/70 to-[#050810] pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay pointer-events-none" />
+    </div>
+  );
+}
+
+function SectionDivider({ lineClass, glowHex }: { lineClass: string, glowHex: string }) {
+  return (
+    <div className="w-full flex items-center justify-center py-8 sm:py-16 relative z-10 opacity-70">
+      <div className={`h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent ${lineClass} to-transparent relative flex justify-center items-center`}>
+        <div className="absolute w-32 h-px bg-white/30" />
+        <div className="w-1.5 h-1.5 rounded-full bg-white" style={{ boxShadow: `0 0 10px 2px ${glowHex}, 0 0 20px ${glowHex}` }} />
+      </div>
     </div>
   );
 }
@@ -32,15 +44,15 @@ export default function Home() {
         <main className="flex-grow w-full overflow-hidden">
           <Hero />
           
-          <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent my-10" />
+          <SectionDivider lineClass="via-cyan-500/40" glowHex="#00F0FF" />
           
           <Projects />
           
-          <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-purple-500/20 to-transparent my-10" />
+          <SectionDivider lineClass="via-purple-500/40" glowHex="#8A2BE2" />
           
           <Products />
           
-          <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-blue-500/20 to-transparent my-10" />
+          <SectionDivider lineClass="via-blue-500/40" glowHex="#0047FF" />
           
           <Contact />
         </main>

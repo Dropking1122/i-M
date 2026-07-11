@@ -31,6 +31,7 @@ export default function TargetCursor() {
     let dotX = mouseX;
     let dotY = mouseY;
     let rafId: number;
+    let hasMoved = false;
 
     let activeEl: HTMLElement | null = null;
 
@@ -49,6 +50,10 @@ export default function TargetCursor() {
     };
 
     const onMouseMove = (e: MouseEvent) => {
+      if (!hasMoved) {
+        hasMoved = true;
+        if (rootRef.current) rootRef.current.style.opacity = '1';
+      }
       mouseX = e.clientX;
       mouseY = e.clientY;
     };
@@ -100,7 +105,7 @@ export default function TargetCursor() {
   }, []);
 
   return (
-    <div ref={rootRef} className="fixed inset-0 z-[100] pointer-events-none hidden md:block" aria-hidden="true">
+    <div ref={rootRef} className="fixed inset-0 z-[100] pointer-events-none hidden md:block opacity-0 transition-opacity duration-500" aria-hidden="true">
       <div
         ref={dotRef}
         className="fixed top-0 left-0 w-1 h-1 rounded-full bg-cyan-300"
