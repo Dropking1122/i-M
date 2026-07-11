@@ -110,41 +110,60 @@ body.target-cursor-active * {
   }
 }
 
-/* Hero name: clean cyan-blue shine sweep + soft breathing glow (reactbits style) */
+/* Hero name: vivid multi-hue "magic" gradient flow + soft breathing glow (reactbits style) */
 .hero-name-shine {
+  position: relative;
+  display: inline-block;
   background: linear-gradient(
     100deg,
-    #e6fdff 0%,
-    var(--accent-cyan) 22%,
-    var(--accent-blue) 50%,
-    var(--accent-cyan) 78%,
-    #e6fdff 100%
+    var(--accent-cyan) 0%,
+    #6ae8ff 14%,
+    var(--accent-blue) 28%,
+    var(--accent-purple) 45%,
+    var(--accent-pink) 58%,
+    var(--accent-purple) 71%,
+    var(--accent-blue) 84%,
+    var(--accent-cyan) 100%
   );
-  background-size: 220% auto;
+  background-size: 300% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: hero-name-sweep 5s ease-in-out infinite, hero-name-glow 3.2s ease-in-out infinite;
+  animation: hero-name-sweep 6s linear infinite, hero-name-glow 3.2s ease-in-out infinite;
+}
+
+/* soft blurred duplicate glowing behind the text for extra "magic" depth */
+.hero-name-shine::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: blur(18px) saturate(1.6);
+  opacity: 0.65;
+  animation: inherit;
 }
 
 @keyframes hero-name-sweep {
   0% {
     background-position: 0% center;
   }
-  50% {
-    background-position: 100% center;
-  }
   100% {
-    background-position: 0% center;
+    background-position: 300% center;
   }
 }
 
 @keyframes hero-name-glow {
   0%, 100% {
-    filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.3));
+    filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.35));
   }
   50% {
-    filter: drop-shadow(0 0 18px rgba(0, 240, 255, 0.55)) drop-shadow(0 0 30px rgba(0, 71, 255, 0.25));
+    filter: drop-shadow(0 0 20px rgba(138, 43, 226, 0.45)) drop-shadow(0 0 32px rgba(0, 71, 255, 0.3));
   }
 }
 
