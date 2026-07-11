@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const AVATAR_PHOTO = '/avatar.jpg';
 
@@ -87,14 +87,31 @@ export default function Navbar() {
               ))}
             </nav>
 
-            <button 
-              className="md:hidden w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white z-50 hover:bg-white/10 transition-colors"
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              className="md:hidden relative w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white z-50 hover:bg-white/10 transition-colors"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={menuOpen}
             >
-              {menuOpen ? <FaTimes /> : <FaBars />}
-            </button>
+              <span className="relative w-4 h-3 flex flex-col justify-between">
+                <motion.span
+                  className="block h-[2px] w-full bg-current rounded-full origin-center"
+                  animate={menuOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                />
+                <motion.span
+                  className="block h-[2px] w-full bg-current rounded-full"
+                  animate={menuOpen ? { opacity: 0, x: -6 } : { opacity: 1, x: 0 }}
+                  transition={{ duration: 0.2 }}
+                />
+                <motion.span
+                  className="block h-[2px] w-full bg-current rounded-full origin-center"
+                  animate={menuOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                />
+              </span>
+            </motion.button>
           </div>
         </div>
       </header>
@@ -102,22 +119,58 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-[#050810]/95 backdrop-blur-3xl flex flex-col items-center justify-center md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-[#050810]/98 backdrop-blur-3xl flex flex-col md:hidden overflow-hidden"
           >
-            <div className="flex flex-col gap-8 text-center">
-              {NAV_LINKS.map(({ name, href, id }) => (
-                <a
-                  key={id}
-                  href={href}
-                  onClick={() => setMenuOpen(false)}
-                  className={`text-4xl font-black tracking-tight ${activeId === id ? 'gradient-text-primary' : 'text-slate-500 hover:text-white transition-colors'}`}
-                >
-                  {name}
-                </a>
-              ))}
+            <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-cyan-500/10 blur-[100px]" />
+            <div className="absolute -bottom-24 -left-24 w-64 h-64 rounded-full bg-blue-600/10 blur-[100px]" />
+
+            <div className="flex-1 flex flex-col items-center justify-center px-8">
+              <nav className="flex flex-col items-stretch gap-1 w-full max-w-xs">
+                {NAV_LINKS.map(({ name, href, id }, i) => (
+                  <motion.a
+                    key={id}
+                    href={href}
+                    onClick={() => setMenuOpen(false)}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 16 }}
+                    transition={{ delay: 0.08 + i * 0.06, duration: 0.35, ease: 'easeOut' }}
+                    whileTap={{ scale: 0.97 }}
+                    className={`group flex items-center justify-between py-4 border-b border-white/5 ${
+                      activeId === id ? '' : 'text-slate-500'
+                    }`}
+                  >
+                    <span
+                      className={`text-3xl font-black tracking-tight transition-colors ${
+                        activeId === id ? 'gradient-text-primary' : 'group-hover:text-white'
+                      }`}
+                    >
+                      {name}
+                    </span>
+                    <span className={`text-xs font-mono ${activeId === id ? 'text-cyan-400' : 'text-slate-600'}`}>
+                      0{i + 1}
+                    </span>
+                  </motion.a>
+                ))}
+              </nav>
+
+              <motion.a
+                href="#contact"
+                onClick={() => setMenuOpen(false)}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 16 }}
+                transition={{ delay: 0.08 + NAV_LINKS.length * 0.06, duration: 0.35, ease: 'easeOut' }}
+                whileTap={{ scale: 0.96 }}
+                className="mt-10 flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[#050810] font-bold text-sm shadow-[0_0_20px_rgba(0,240,255,0.3)]"
+              >
+                <FaWhatsapp className="text-base" />
+                Contact Me
+              </motion.a>
             </div>
           </motion.div>
         )}
