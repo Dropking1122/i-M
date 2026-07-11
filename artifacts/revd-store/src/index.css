@@ -110,59 +110,76 @@ body.target-cursor-active * {
   }
 }
 
-/* Hero name: vivid multi-hue "magic" gradient flow + soft breathing glow (reactbits style) */
+/* Hero name: fixed cyan-blue-purple gradient base + a light "shine" sweep passing over it
+   (reactbits "Shiny Text" style) instead of the hue constantly morphing, which read as a
+   loading spinner. The gradient itself never changes color — only a soft highlight travels. */
 .hero-name-shine {
   position: relative;
   display: inline-block;
   background: linear-gradient(
-    110deg,
-    #6ae8ff 0%,
-    var(--accent-cyan) 20%,
-    #4fa8ff 40%,
-    var(--accent-blue) 55%,
-    #7a5cf0 70%,
-    var(--accent-purple) 85%,
-    #4fa8ff 100%
+    100deg,
+    var(--accent-cyan) 0%,
+    #4fa8ff 45%,
+    var(--accent-blue) 70%,
+    var(--accent-purple) 100%
   );
-  background-size: 250% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: hero-name-sweep 20s ease-in-out infinite alternate, hero-name-glow 6s ease-in-out infinite;
+  animation: hero-name-glow 5s ease-in-out infinite;
 }
 
-/* soft blurred duplicate glowing behind the text for extra "magic" depth */
+/* soft blurred duplicate glowing behind the text for extra depth (static, no color cycling) */
 .hero-name-shine::before {
   content: attr(data-text);
   position: absolute;
   inset: 0;
   z-index: -1;
   background: inherit;
-  background-size: inherit;
-  background-position: inherit;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: blur(18px) saturate(1.6);
-  opacity: 0.65;
-  animation: inherit;
+  opacity: 0.6;
 }
 
-@keyframes hero-name-sweep {
+/* the traveling light highlight */
+.hero-name-shine::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.85) 50%,
+    transparent 60%
+  );
+  background-size: 250% 100%;
+  background-position: -60% 0;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  mix-blend-mode: overlay;
+  animation: hero-name-shine-sweep 4.5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+@keyframes hero-name-shine-sweep {
   0% {
-    background-position: 0% center;
+    background-position: -60% 0;
   }
-  100% {
-    background-position: 300% center;
+  35%, 100% {
+    background-position: 160% 0;
   }
 }
 
 @keyframes hero-name-glow {
   0%, 100% {
-    filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.35));
+    filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.3));
   }
   50% {
-    filter: drop-shadow(0 0 20px rgba(138, 43, 226, 0.45)) drop-shadow(0 0 32px rgba(0, 71, 255, 0.3));
+    filter: drop-shadow(0 0 18px rgba(138, 43, 226, 0.35)) drop-shadow(0 0 28px rgba(0, 71, 255, 0.25));
   }
 }
 
