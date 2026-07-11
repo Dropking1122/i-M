@@ -190,6 +190,7 @@ body.target-cursor-active * {
 
 .hero-name-text {
   font-family: var(--font-display);
+  font-weight: 900;
   letter-spacing: -0.02em;
   font-feature-settings: "kern" 1, "liga" 1;
   text-rendering: optimizeLegibility;
