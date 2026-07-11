@@ -184,14 +184,13 @@ body.target-cursor-active * {
 
 .hero-name-shine {
   display: inline-flex;
-  vertical-align: bottom;
   filter: drop-shadow(0 0 14px rgba(0, 240, 255, 0.35)) drop-shadow(0 0 28px rgba(0, 113, 255, 0.2));
   animation: hero-name-glow 5s ease-in-out infinite;
 }
 
 .hero-name-text {
-  font-family: 'Space Grotesk', var(--font-display);
-  letter-spacing: -0.015em;
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
   font-feature-settings: "kern" 1, "liga" 1;
   text-rendering: optimizeLegibility;
 }

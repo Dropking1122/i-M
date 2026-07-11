@@ -89,13 +89,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-extrabold tracking-tight leading-[1.05] mb-6"
+          className="flex items-center justify-center gap-3 sm:gap-4 text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-black tracking-tighter leading-[1.05] mb-6"
         >
           <span className="animated-gradient-text hero-name-shine inline-block pb-2">
             <span className="text-content hero-name-text">Revaldi</span>
           </span>
           <FaCheckCircle
-            className="inline-block ml-3 sm:ml-4 text-blue-500 drop-shadow-[0_0_15px_rgba(59,130,246,0.8)] align-middle"
+            className="shrink-0 text-blue-500 drop-shadow-[0_0_15px_rgba(59,130,246,0.8)]"
             style={{ fontSize: 'clamp(1.5rem, 4vw, 3.5rem)' }}
           />
         </motion.h1>
