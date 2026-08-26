@@ -1,2 +1,4 @@
-# pnpm >= 10 membaca setting dari sini, bukan .npmrc.
+# pnpm >= 10 membaca setting dari sini, bukan .npmrc / package.json.
 minimumReleaseAge: 0
+onlyBuiltDependencies:
+  - esbuild
