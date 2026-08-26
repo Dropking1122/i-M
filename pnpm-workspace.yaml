@@ -1,0 +1,2 @@
+# pnpm >= 10 membaca setting dari sini, bukan .npmrc.
+minimumReleaseAge: 0
