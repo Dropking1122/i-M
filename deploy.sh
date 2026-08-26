@@ -7,13 +7,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-# Jangan jalankan dengan sudo di luar — script sudah sudo-sendiri untuk nginx/apt.
-if [ "$(id -u)" -eq 0 ]; then
-  echo "ERROR: jalankan tanpa sudo: DOMAIN=domain.com ./deploy.sh" >&2
-  exit 1
-fi
-
-command -v git   >/dev/null || { echo "ERROR: git tidak ada. sudo apt install -y git" >&2; exit 1; }
+command -v git   >/dev/null || { echo "ERROR: git tidak ada. apt install -y git" >&2; exit 1; }
 command -v node  >/dev/null || { echo "ERROR: node tidak ada. Install via nvm (lihat VPS_INSTALL.md langkah 1)." >&2; exit 1; }
 command -v pnpm  >/dev/null || { echo "ERROR: pnpm tidak ada. npm install -g pnpm@9" >&2; exit 1; }
 
