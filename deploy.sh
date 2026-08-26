@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Deploy web portofolio (static Vite SPA) ke VPS.
-# Jalankan:  sudo DOMAIN=domain.com ./deploy.sh
+# Jalankan TANPA sudo:  DOMAIN=domain.com ./deploy.sh
 # Tanpa DOMAIN: hanya update build (asumsi nginx sudah terkonfigurasi).
 
 cd "$(dirname "$0")"
@@ -19,8 +19,6 @@ command -v pnpm  >/dev/null || { echo "ERROR: pnpm tidak ada. npm install -g pnp
 
 DOMAIN="${DOMAIN:-}"
 WWWROOT="$PWD/dist/public"
-NGINX_AVAILABLE="/etc/nginx/sites-available/revdstore"
-NGINX_ENABLED="/etc/nginx/sites-enabled/revdstore"
 
 echo "==> Pull kode terbaru"
 git pull --ff-only
@@ -31,8 +29,13 @@ pnpm install --no-frozen-lockfile || pnpm install
 echo "==> Build"
 pnpm build
 
-if [ -n "$DOMAIN" ] && [ ! -f "$NGINX_AVAILABLE" ]; then
-  echo "==> Setup nginx untuk $DOMAIN"
+if [ -n "$DOMAIN" ]; then
+  # Pakai config nginx yang sudah ada kalau ada (cocok server_name),
+  # kalau tidak buat baru bernama revdstore.
+  EXISTING="$(sudo grep -rl "server_name $DOMAIN" /etc/nginx/sites-available/ 2>/dev/null | head -1 || true)"
+  NGINX_AVAILABLE="${EXISTING:-/etc/nginx/sites-available/revdstore}"
+  NGINX_ENABLED="/etc/nginx/sites-enabled/$(basename "$NGINX_AVAILABLE")"
+  echo "==> Setup nginx -> $NGINX_AVAILABLE ($DOMAIN)"
   sudo apt-get install -y nginx
   sudo tee "$NGINX_AVAILABLE" >/dev/null <<EOF
 server {
