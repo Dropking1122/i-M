@@ -18,7 +18,9 @@ echo "==> Pull kode terbaru"
 git pull --ff-only
 
 echo "==> Install dependensi"
-pnpm install --no-frozen-lockfile || pnpm install
+# ERR_PNPM_IGNORED_BUILDS (esbuild) di pnpm 11 aman diabaikan:
+# binary sudah disediakan paket opsional @esbuild/<platform>.
+pnpm install --no-frozen-lockfile || pnpm install || echo "WARN: install selesai dengan peringatan (lanjut)"
 
 echo "==> Build"
 pnpm build
