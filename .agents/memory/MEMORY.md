@@ -1,3 +1,0 @@
-- [Framer Motion TypeScript variants](framer-motion-variants.md) — `type: "spring"` in variant objects needs `as const` to satisfy TS strict typing.
-- [Anime.js v4 migration](animejs-v4.md) — v4 uses named exports (`animate`, `stagger`, `utils`), not a default export; `ease` replaces `easing`; easing names drop the `ease` prefix.
-- [Imported artifact workflows missing](imported-artifact-workflow-registration.md) — re-save artifact.toml via verifyAndReplaceArtifactToml to force workflow registration on freshly imported projects.
